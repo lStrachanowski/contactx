@@ -1,0 +1,122 @@
+/* .main-container{
+ 
+} */
+
+.form-switch{
+    display: flex;
+    flex-direction: row;
+    padding: 10% 0% ;
+}
+
+.form-button{
+    min-width:  200px;
+    background-color: #f6f4f4;
+    display: flex;
+    justify-content: center;
+    padding: 2.5vh;
+    font-size: 20pt;
+    color: #4d4d4d;
+    font-family: Myriad Pro;
+    border: 1px solid #e0dfdf ;
+}
+.form-button:hover{
+    background-color: #7fbbf7;
+    cursor: pointer;
+    color: #ffffff;
+    font-weight: bold;
+    transition: 0.25s;
+    font-size: 19pt;
+}
+
+.form-button-selected{
+    background-color: #7fbbf7;
+    cursor: pointer;
+    color: #ffffff;
+    font-weight: bold;
+    transition: 0.25s;
+    font-size: 19pt;
+}
+
+.form-style{
+    display: flex;
+    flex-direction: column;
+}
+
+.label-style{
+    color: #4d4d4d;
+    font-family: Myriad Pro;
+    font-size: 14pt;
+    padding: 5px;
+    display: flex;
+    align-items: baseline;
+}
+
+input{
+    min-width:  400px;
+    padding: 15px;
+    border-radius: 6px ;
+    border: 1px solid #d4d4d4;
+    background-color: #f6f4f4;
+    font-size: 14pt;
+}
+
+.button-style{
+    background-color: #4e587f;
+    font-size: 14pt;
+    color: #ffffff;
+    border-radius: 6px ;
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+    -webkit-box-shadow: 10px 6px 13px 0px rgba(222,222,222,1);
+    -moz-box-shadow: 10px 6px 13px 0px rgba(222,222,222,1);
+    box-shadow: 10px 6px 13px 0px rgba(222,222,222,1);
+    min-width: 30%;
+}
+
+.password-reset-style{
+    color: #808080;
+    font-family: Myriad Pro;
+    font-size: 14pt;
+    padding: 15px;
+
+}
+
+.center-form-elements{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px;
+}
+
+
+@media only screen and (max-width: 825px) {
+
+    .form-switch{
+        padding: 5% 0% ;
+    }
+
+    input{
+    min-width:  200px;
+    font-size: 7pt;
+    }
+
+    .form-button{
+        min-width: 150px;
+        padding: 1.5vh;
+    }
+
+} 
+
+@media only screen 
+and (min-width : 768px) 
+and (max-width : 1281px) {
+    .form-button{
+        min-width:  150px;
+        padding: 1.5vh;
+        font-size: 20pt;
+    }
+    input{
+        min-width:  300px;
+    }
+}

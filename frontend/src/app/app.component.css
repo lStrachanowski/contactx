@@ -1,0 +1,224 @@
+
+.main-container{
+    display: flex;
+    flex-direction: row;
+    height: 90vh;
+    padding: 1.5%;
+}
+.left-container-width{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.right-container-width{
+    width: 60%;
+    display: flex;
+    justify-content: right;
+}
+
+.logo-style{
+    width:45%;
+}
+
+.backimage-style{
+    width: 100%;
+}
+.menu-container{
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+    background-color: #4e587f;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    z-index: 3;
+    top: 2vh;
+    right: 2vh;
+    width: 65px;
+    height: 65px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.menu-container:hover{
+    background-color: #7d8fd7;
+    transition: 0.25s;
+}
+.menu{
+    width: 40px;
+    height: 6px;
+    background-color: black;
+    margin: 4px ;
+    background-color: white;
+    border-radius: 6px;
+}
+.motto-container{
+    position: absolute;
+    font-family: Myriad Pro;
+    z-index: 1;
+    top: 25%;
+    right: 8%;
+}
+.motto-top{
+    font-size: 6vw;
+    font-weight: bold;
+    color: white;
+    text-shadow: 3px 3px rgb(164, 164, 164);
+}
+.motto-bottom{
+    font-size: 3vw;
+    text-align: right;
+    font-weight: bold;
+    margin-top: -25px;
+    color: white;
+    text-shadow: 3px 3px rgb(164, 164, 164);
+}
+
+.motto-container-mobile{
+    display: none;
+}
+
+.menu-background{
+    position: absolute;
+    width: 100%;
+    height:100%;
+    margin-top: -8px;
+    margin-left: -8px;
+    background-color: rgba(78, 88, 127,0.8);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-item{
+    display: flex;
+    color: white;
+    font-size: 35pt;
+    font-family: Myriad Pro;
+    margin: 1.25%;
+}
+
+.menu-item:hover{
+    color:#BA3545;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.close {
+    width: 62px;
+    height: 62px;
+    position: relative;
+}
+.close:after {
+    content: '';
+    height: 62px;
+    border-left: 8px solid #fff;
+    position: absolute;
+    transform: rotate(45deg);
+    left: 28px;
+    border-radius: 6px;
+}
+
+.close:before {
+    content: '';
+    height: 62px;
+    border-left: 8px solid #fff;
+    position: absolute;
+    transform: rotate(-45deg);
+    left: 28px;
+    border-radius: 6px;
+}
+
+@media only screen and (max-width: 825px) {
+    .main-container{
+        flex-direction: column;
+        padding: 0vh;
+    }
+    .left-container-width{
+        width: 100%;
+    }
+    .right-container-width{
+        width: 100%;
+    }
+
+    .menu-container{
+        width: 40px;
+        height: 40px;
+        top: 10px;
+        right: 10px;
+    }
+    .menu{
+        width: 35px;
+        height: 5px;
+        margin: 3px ;
+
+    }
+    .motto-container{
+        display: none;
+    }
+    .motto-container-mobile{
+        display: flex;
+        flex-direction: column;
+        font-family: Myriad Pro;
+        float: left;
+        position: absolute;
+        left: 20%;
+        margin-top: 50px;
+    }
+    .motto-top-mobile{
+        font-size: 45px;
+        font-weight: bold;
+        color: white;
+        text-shadow: 3px 3px rgb(164, 164, 164);
+    }
+    .motto-bottom-mobile{
+        font-size: 25px;
+        text-align: right;
+        font-weight: bold;
+        color: white;
+        text-shadow: 3px 3px rgb(164, 164, 164);
+    }
+
+    .menu-item{
+        font-size: 25pt;
+        margin:    2.5%;
+    }
+
+    .close {
+        width: 30px;
+        height: 30px;
+        position: relative;
+    }
+    .close:after {
+        content: '';
+        height: 30px;
+        border-left: 8px solid #fff;
+        position: absolute;
+        transform: rotate(45deg);
+        left: 12px;
+        border-radius: 6px;
+    }
+    
+    .close:before {
+        content: '';
+        height: 30px;
+        border-left: 8px solid #fff;
+        position: absolute;
+        transform: rotate(-45deg);
+        left: 12px;
+        border-radius: 6px;
+    }
+
+  
+    @media only screen and (max-width: 825px) and (orientation: landscape) {
+        .motto-container-mobile{
+            left: 30%;
+        }
+    }
+} 
+
+

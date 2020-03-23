@@ -1,0 +1,36 @@
+<div class="main-container">
+    <div class="form-switch">
+        <div class="form-button" [ngClass]="{'form-button-selected': selected === 'login'}" (click)="loginClick()">
+            Login
+        </div>
+        <div class="form-button" [ngClass]="{'form-button-selected': selected === 'register'}" (click)="registerClick()">
+            Register
+        </div>
+    </div>
+
+    <form class="form-style" *ngIf="selected === 'login'">
+        <label for="email" class="label-style">Email</label>
+        <input id="email">
+        <label for="password" class="label-style">Password</label>
+        <input id="password">
+
+        <div class="center-form-elements">
+            <div class="password-reset-style">Forgot your password?</div> 
+            <button type="submit" class="button-style">LOG IN</button>
+        </div>
+    </form>
+    <form class="form-style" *ngIf="selected === 'register'">
+        <label for="email" class="label-style">User name</label>
+        <input id="user_name">
+        <label for="email" class="label-style">Email</label>
+        <input id="email">
+        <label for="password" class="label-style">Password</label>
+        <input id="password">
+        <label for="password_confirmation" class="label-style">Confirm password</label>
+        <input id="password_confirmation">
+
+        <div class="center-form-elements">
+            <button type="submit" class="button-style">REGISTER</button>
+        </div>
+    </form>
+</div>

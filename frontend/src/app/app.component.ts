@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'contactx';
+  showMenu = false;
+
+  showMenuClick() {
+    this.showMenu = this.showMenu === true ? false : true;
+  }
 }
