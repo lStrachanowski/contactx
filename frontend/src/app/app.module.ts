@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginRegisterComponent } from './components/login-register/login-register.component';
 import { DashboardComponent } from './routes-components/dashboard/dashboard.component';
 import { LandingPageComponent } from './routes-components/landing-page/landing-page.component';
+import { HeaderComponent } from './components/header/header.component';
 
 
 
@@ -14,7 +15,8 @@ import { LandingPageComponent } from './routes-components/landing-page/landing-p
     AppComponent,
     LoginRegisterComponent,
     DashboardComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
