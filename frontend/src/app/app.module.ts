@@ -7,6 +7,7 @@ import { LoginRegisterComponent } from './components/login-register/login-regist
 import { DashboardComponent } from './routes-components/dashboard/dashboard.component';
 import { LandingPageComponent } from './routes-components/landing-page/landing-page.component';
 import { HeaderComponent } from './components/header/header.component';
+import { AddpanelComponent } from './components/addpanel/addpanel.component';
 
 
 
@@ -16,7 +17,8 @@ import { HeaderComponent } from './components/header/header.component';
     LoginRegisterComponent,
     DashboardComponent,
     LandingPageComponent,
-    HeaderComponent
+    HeaderComponent,
+    AddpanelComponent
   ],
   imports: [
     BrowserModule,
