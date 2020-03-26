@@ -8,6 +8,8 @@ import { DashboardComponent } from './routes-components/dashboard/dashboard.comp
 import { LandingPageComponent } from './routes-components/landing-page/landing-page.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AddpanelComponent } from './components/addpanel/addpanel.component';
+import { SearchPanelComponent } from './components/search-panel/search-panel.component';
+import { AlphabeticPanelComponent } from './components/alphabetic-panel/alphabetic-panel.component';
 
 
 
@@ -18,7 +20,9 @@ import { AddpanelComponent } from './components/addpanel/addpanel.component';
     DashboardComponent,
     LandingPageComponent,
     HeaderComponent,
-    AddpanelComponent
+    AddpanelComponent,
+    SearchPanelComponent,
+    AlphabeticPanelComponent
   ],
   imports: [
     BrowserModule,
