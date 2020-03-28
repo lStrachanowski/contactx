@@ -1,12 +1,16 @@
-<div class="result-container">
-    <div>Tomasz</div>
-    <div>Strachanowski</div>
-    <div class="bold-item">DSV</div>
-    <div class="bold-item">praca</div>
-    <div class="option-bar">
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
+<div *ngFor = "let contact of contactList">
+    <div class="result-container">
+        <div>{{contact.vorname}}</div>
+        <div>{{contact.name}}</div>
+        <div class="bold-item">{{contact.company}}</div>
+        <div class="bold-item">{{contact.group}}</div>
+        <div class="option-bar">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
     </div>
-
 </div>
+
+
+
