@@ -1,0 +1,75 @@
+.result-container{
+    display: flex;
+    min-width: 70vw;
+    background-color: #CEDFF2;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 22px;
+    margin: 1% 0%;
+    cursor: pointer;
+    font-size: 27px;
+    font-family: Myriad Pro;
+    color: #3E3E3E;
+    border: 1px solid rgba(215, 212, 212,0.5);
+    border-radius: 18px;
+    -webkit-box-shadow: 5px 5px 5px 0px rgb(231, 230, 230);
+    -moz-box-shadow: 5px 5px 5px 0px rgb(231, 230, 230);
+    box-shadow: 5px 5px 5px 0px rgb(231, 230, 230);
+}
+
+.result-container:hover{
+    transition: 0.5s;
+    background-color: #4E587F;
+    color: white;
+}
+
+.result-container:hover >.option-bar>.circle{
+    background-color:  white;
+}
+
+.bold-item{
+    font-weight: bold;
+    color: white;
+    font-size: 23px;
+}
+
+.circle{
+    min-width: 10px;
+    min-height: 10px;
+    background-color:  #4E587F;
+    border-radius: 50px;
+    margin: 7px 0px;
+}
+
+.option-bar{
+    margin-right: -8%;
+}
+
+@media only screen and (max-width: 825px)  { 
+    .result-container{
+        min-width: 75vw;
+        padding: 15px;
+        margin: 1.5% 0%;
+        font-size: 17px;
+        border-radius: 18px;
+    }
+
+    .bold-item{
+        font-weight: bold;
+        color: white;
+        font-size: 17px;
+    }
+
+    .circle{
+        min-width: 7px;
+        min-height: 7px;
+        background-color:  #4E587F;
+        border-radius: 50px;
+        margin: 7px 0px;
+    }
+    .option-bar{
+        margin-right: -3%;
+    }
+
+}
+

@@ -46,5 +46,6 @@
 @media only screen and (max-width: 825px) {
     .panel-container-item-label{
         margin-left: 5vw;
+        font-size: 17px;
     }
 }

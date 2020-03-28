@@ -10,6 +10,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { AddpanelComponent } from './components/addpanel/addpanel.component';
 import { SearchPanelComponent } from './components/search-panel/search-panel.component';
 import { AlphabeticPanelComponent } from './components/alphabetic-panel/alphabetic-panel.component';
+import { SearchResultItemComponent } from './components/search-result-item/search-result-item.component';
+import { GroupsComponent } from './components/groups/groups.component';
 
 
 
@@ -22,7 +24,9 @@ import { AlphabeticPanelComponent } from './components/alphabetic-panel/alphabet
     HeaderComponent,
     AddpanelComponent,
     SearchPanelComponent,
-    AlphabeticPanelComponent
+    AlphabeticPanelComponent,
+    SearchResultItemComponent,
+    GroupsComponent
   ],
   imports: [
     BrowserModule,

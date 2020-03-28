@@ -4,4 +4,19 @@
     align-items: center;
 }
 
+.group-position{
+    position: absolute;
+    right: 0px;
+    top: 45vh;
+}
+
+div > app-search-result-item:first-child{
+    display: none;
+}
+
+@media only screen and (max-width: 825px) and (orientation: landscape) { 
+    .group-position{
+        top: 50vw;
+    }
+}
 

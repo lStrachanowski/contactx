@@ -1,0 +1,39 @@
+<div class="closed-group" (click)="showPanel()" *ngIf="!show">
+    <img src="../../../assets/images/group.svg" class="icon-size">
+</div>
+
+
+<div class="open-group" (click)="showPanel()" *ngIf="show">
+    <div class="group-icon-holder">
+        <img src="../../../assets/images/group.svg" class="icon-size">
+    </div>
+    <div class="groups-holder">
+        <div class="group-items-holder">
+            <div class="group-item">
+                <div class="group-name">
+                    Dom (25)
+                </div>
+                <div>
+                    <img src="../../../assets/images/group-gear.svg" class="gropu-gear-icon">
+                </div>
+            </div>
+            <div class="group-item">
+                <div class="group-name">
+                    Praca (147)
+                </div>
+                <div>
+                    <img src="../../../assets/images/group-gear.svg" class="gropu-gear-icon">
+                </div>
+            </div>
+            <div class="group-item">
+                <div class="group-name">
+                    Zagranica (36)
+                </div>
+                <div>
+                    <img src="../../../assets/images/group-gear.svg" class="gropu-gear-icon">
+                </div>
+            </div>
+        </div>
+    
+    </div>
+</div>
