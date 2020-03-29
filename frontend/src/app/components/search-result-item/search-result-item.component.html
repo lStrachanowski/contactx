@@ -1,16 +1,18 @@
 <div *ngFor = "let contact of contactList">
     <div class="result-container">
-        <div>{{contact.vorname}}</div>
-        <div>{{contact.name}}</div>
-        <div class="bold-item">{{contact.company}}</div>
-        <div class="bold-item">{{contact.group}}</div>
-        <div class="option-bar">
+        <div class="width-constant-middle">{{contact.vorname |shortString}}</div>
+        <div class="width-constant-middle">{{contact.name |shortString}}</div>
+        <div class="bold-item width-constant-wide hide-in-mobile">{{contact.company |shortString}}</div>
+        <div class="bold-item width-constant-narrow">{{contact.group |shortString}}</div>
+        <div class="option-bar ">
             <div class="circle"></div>
             <div class="circle"></div>
             <div class="circle"></div>
         </div>
     </div>
 </div>
+
+
 
 
 

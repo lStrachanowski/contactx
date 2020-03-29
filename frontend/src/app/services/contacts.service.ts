@@ -21,7 +21,7 @@ export class ContactsService {
    },
    {
     vorname: 'Albert',
-    name: 'Sosnowski',
+    name: 'Sosnowski-Krasikiewiczowicz',
     contact_id: 2,
     user_id: 'abc1',
     company: 'SPS ps.z o.o.',
@@ -50,7 +50,7 @@ export class ContactsService {
 
   ];
   constructor() { }
-  getContact(){
+  getContact() {
     return this.contacts;
   }
 }

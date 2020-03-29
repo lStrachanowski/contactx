@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ContactsService} from '../../services/contacts.service';
+import {ShortString} from '../../pipes/short-string.pipe';
 import { from } from 'rxjs';
 @Component({
   selector: 'app-search-result-item',
@@ -13,7 +14,6 @@ export class SearchResultItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.contactList);
   }
 
 }

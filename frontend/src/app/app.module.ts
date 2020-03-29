@@ -12,7 +12,7 @@ import { SearchPanelComponent } from './components/search-panel/search-panel.com
 import { AlphabeticPanelComponent } from './components/alphabetic-panel/alphabetic-panel.component';
 import { SearchResultItemComponent } from './components/search-result-item/search-result-item.component';
 import { GroupsComponent } from './components/groups/groups.component';
-
+import {ShortString} from './pipes/short-string.pipe';
 
 
 @NgModule({
@@ -26,7 +26,8 @@ import { GroupsComponent } from './components/groups/groups.component';
     SearchPanelComponent,
     AlphabeticPanelComponent,
     SearchResultItemComponent,
-    GroupsComponent
+    GroupsComponent,
+    ShortString
   ],
   imports: [
     BrowserModule,
