@@ -95,7 +95,13 @@
     }
 
     .group-icon-holder{
-        min-width: 65px;
+        width: 65px;
+    }
+
+    .group-item{
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 18px;
     }
 }
 
