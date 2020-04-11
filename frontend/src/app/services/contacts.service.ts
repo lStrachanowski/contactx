@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import {Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -50,7 +50,30 @@ export class ContactsService {
 
   ];
   constructor() { }
+
+  /*
+ * Returns contacts array
+ */
   getContact() {
     return this.contacts;
+  }
+
+  /*
+ * Is searching for contact with given id
+ * @param {number} id - Contact id
+ */
+  searchContactId(id: number) {
+    if (this.contacts.length > 0) {
+      let res = Observable.create((observer) => {
+        this.contacts.forEach(element => {
+          if (element.contact_id === id) {
+            observer.next(element);
+          }
+        });
+      });
+      return res;
+    } else {
+      return null;
+    }
   }
 }

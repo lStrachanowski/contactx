@@ -13,6 +13,9 @@ import { AlphabeticPanelComponent } from './components/alphabetic-panel/alphabet
 import { SearchResultItemComponent } from './components/search-result-item/search-result-item.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import {ShortString} from './pipes/short-string.pipe';
+import { UserCardComponent } from './routes-components/user-card/user-card.component';
+import { ContactDetailsComponent } from './components/contact-details/contact-details.component';
+import { NotesComponent } from './components/notes/notes.component';
 
 
 @NgModule({
@@ -27,7 +30,10 @@ import {ShortString} from './pipes/short-string.pipe';
     AlphabeticPanelComponent,
     SearchResultItemComponent,
     GroupsComponent,
-    ShortString
+    ShortString,
+    UserCardComponent,
+    ContactDetailsComponent,
+    NotesComponent
   ],
   imports: [
     BrowserModule,

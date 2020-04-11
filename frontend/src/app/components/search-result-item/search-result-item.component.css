@@ -58,6 +58,10 @@
     
 }
 
+.show-in-mobile{
+    display:none;
+}
+
 @media only screen and (max-width: 825px)  { 
     .result-container{
         min-width: 75vw;
@@ -87,6 +91,30 @@
     .hide-in-mobile{
         display: none;
     }
+
+    .show-in-mobile{
+        display: flex;
+    }
+
+    .icons-size_off{
+        width: 35px;
+        margin-left: 8px;
+        display:flex;
+    }
+
+    .icons-size_on{
+        width: 35px;
+        margin-left: 8px;
+        display: none;
+    }
+
+    .result-container:hover > .show-in-mobile >.icons-size_on{
+        display: flex;
+    }
+    .result-container:hover > .show-in-mobile >.icons-size_off{
+        display: none;
+    }
+
 
 }
 
