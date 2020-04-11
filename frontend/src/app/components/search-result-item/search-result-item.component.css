@@ -17,6 +17,12 @@
     box-shadow: 5px 5px 5px 0px rgb(231, 230, 230);
 }
 
+.over{
+    height: 10%;
+    width: 65vw;
+    position: absolute;
+    left: 15%;
+}
 .result-container:hover{
     transition: 0.5s;
     background-color: #4E587F;
@@ -113,6 +119,12 @@
     }
     .result-container:hover > .show-in-mobile >.icons-size_off{
         display: none;
+    }
+
+    .over{
+        height: 10%;
+        width: 55vw;
+        left: 10%;
     }
 
 

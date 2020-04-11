@@ -1,18 +1,21 @@
+<app-header></app-header>
 <div class="main-container">
-    <app-header></app-header>
     <div class="mobile-close-container">
         <div>
             <img src="../../../assets/images/notes icon.svg"  class="icon-size-off" />
         </div>
+        <a [routerLink]="['/dashboard']">
             <div class="close">
             </div>
+            </a>
     </div>
     <div class="contact-details-position">
         <div class="close-container">
-            <div class="close">
-            </div>
+            <a [routerLink]="['/dashboard']">
+                <div class="close">
+                </div>
+            </a>
         </div>
-        
         <div class="contact-wide">
             <app-contact-details></app-contact-details>
         </div>

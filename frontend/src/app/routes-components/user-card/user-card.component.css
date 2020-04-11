@@ -80,7 +80,8 @@
     .mobile-close-container{
         display: flex;
         background-color: #c0c5d9;
-        width: calc(100% + 16px);
+        /* width: calc(100% + 16px); */
+        width: 100vw;
         margin: 0px -8px 0px -8px;
         right: 7%;
         justify-content: space-between;

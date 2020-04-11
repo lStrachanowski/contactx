@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ContactsService} from '../../services/contacts.service';
 import {ShortString} from '../../pipes/short-string.pipe';
 import { from } from 'rxjs';
+import {RouterLink} from '@angular/router';
+
 @Component({
   selector: 'app-search-result-item',
   templateUrl: './search-result-item.component.html',
