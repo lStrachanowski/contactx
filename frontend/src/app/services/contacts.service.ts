@@ -65,7 +65,7 @@ export class ContactsService {
   searchContactId(id: number) {
     if (this.contacts.length > 0) {
       let res = Observable.create((observer) => {
-        this.contacts.forEach(element => {
+        this.contacts.filter((element) => {
           if (element.contact_id === id) {
             observer.next(element);
           }

@@ -2,31 +2,22 @@
     <div class="header-style">
         Notes
     </div>
-    <div class="note-container">
-        <div class="notes-message">
-            Ma ładunki na z HU do DK 4.0 m szerokosci dobre stawki , ale delikatny towar.
-        </div>
-        <div class="bottom-note">
-            <div>19.12.2019</div> 
-            <div class="bottom-note-options">
-                <div class="option-spacing">edit</div>
-                <div class="option-spacing red">delete</div>
+    <div *ngFor="let note of notesData" class="loop-wrapper">
+        <div class="note-container">
+            <div class="notes-message">
+                {{note.text}}
+            </div>
+            <div class="bottom-note">
+                <div>{{note.date}}</div> 
+                <div class="bottom-note-options">
+                    <div class="option-spacing">edit</div>
+                    <div class="option-spacing red">delete</div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="note-container">
-        <div class="notes-message">
-            Ma ładunki na z HU do DK 4.0 m szerokosci dobre stawki , ale delikatny towar.
-        </div>
-        <div class="bottom-note">
-            <div>19.12.2019</div> 
-            <div class="bottom-note-options">
-                <div class="option-spacing">edit</div>
-                <div class="option-spacing red">delete</div>
-            </div>
-        </div>
-    </div>
+
     <div class="add-button-container">
         <div class="add-button">
             +

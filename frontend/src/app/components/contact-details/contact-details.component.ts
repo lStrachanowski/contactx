@@ -3,6 +3,7 @@ import {Params} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
 import {ContactsService} from '../../services/contacts.service';
 
+
 @Component({
   selector: 'app-contact-details',
   templateUrl: './contact-details.component.html',
