@@ -1,10 +1,20 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, BehaviorSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotesService {
+
+  /*
+  Is holding add note button status.
+  */
+  private statusSource = new BehaviorSubject<boolean>(false);
+  currentStatus = this.statusSource.asObservable();
+
+  /*
+  Notes array.
+  */
   notes = [
     {
       contact_id: 1,
@@ -32,28 +42,23 @@ export class NotesService {
     },
 
   ];
+
   constructor() { }
 
-   /*
- * Is searching for notes with given contact id
- * @param {number} id - Contact id
- */
-  // searchNotes(id: number) {
-  //   if ( this.notes.length > 0 ) {
-  //     let resultsArray = [];
-  //     let res  = Observable.create((observer) => {
-  //       this.notes.forEach( element => {
-  //         if (element.contact_id === id) {
-  //           resultsArray.push(element);
-  //         }
-  //       });
-  //       observer.next(resultsArray);
-  //     });
-  //     return res;
-  //   } else {
-  //     return null;
-  //   }
-  // }
+  /*
+  * Is switching status to true or false , which is showing or hiding nottes form.
+  * @param {boolean} status - show or hide form
+  */
+
+  changeStatus(status: boolean) {
+    this.statusSource.next(status);
+  }
+
+  /*
+  * Is searching for notes with given user id
+  * @param {number} id - contact id
+  */
+
   searchNotes(id: number) {
     if ( this.notes.length > 0 ) {
       let resultsArray = [];

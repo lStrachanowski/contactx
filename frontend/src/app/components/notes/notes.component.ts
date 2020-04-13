@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {Params} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
 import {NotesService} from '../../services/notes.service';
@@ -12,6 +12,7 @@ export class NotesComponent implements OnInit {
   userID = null;
   notesData = null;
   contactData = null;
+  showForm: boolean;
   constructor(private route: ActivatedRoute, private notes: NotesService) {
     this.route.params.subscribe( (params: Params) => {
       this.userID = params.id;
@@ -21,10 +22,16 @@ export class NotesComponent implements OnInit {
         this.notesData = val;
       });
     }
-
   }
 
   ngOnInit() {
+    this.notes.currentStatus.subscribe(val => {
+      this.showForm = val;
+    });
+  }
+
+  onAddButton() {
+    this.notes.changeStatus(true);
   }
 
 }

@@ -16,9 +16,11 @@
             </div>
         </div>
     </div>
-
-
-    <div class="add-button-container">
+    <div class="add-note-window" *ngIf="showForm">
+        <app-add-note></app-add-note>
+    </div>
+    
+    <div class="add-button-container" (click)="onAddButton()" *ngIf="!showForm">
         <div class="add-button">
             +
         </div>
@@ -26,8 +28,6 @@
             Add note
         </div>
     </div>
-
-   
 
 
 </div>

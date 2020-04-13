@@ -51,7 +51,7 @@ export class ContactsService {
   ];
   constructor() { }
 
-  /*
+ /*
  * Returns contacts array
  */
   getContact() {
