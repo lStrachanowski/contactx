@@ -15,6 +15,7 @@ import {ShortString} from './pipes/short-string.pipe';
 import { UserCardComponent } from './routes-components/user-card/user-card.component';
 import { ContactDetailsComponent } from './components/contact-details/contact-details.component';
 import { NotesComponent } from './components/notes/notes.component';
+import { MobileNotesComponent } from './routes-components/mobile-notes/mobile-notes.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { NotesComponent } from './components/notes/notes.component';
     ShortString,
     UserCardComponent,
     ContactDetailsComponent,
-    NotesComponent
+    NotesComponent,
+    MobileNotesComponent
   ],
   imports: [
     BrowserModule,

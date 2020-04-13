@@ -1,27 +1,37 @@
 <app-header></app-header>
+
 <div class="main-container">
-    <div class="mobile-close-container">
-        <div>
-            <img src="../../../assets/images/notes icon.svg"  class="icon-size-off" />
-        </div>
-        <a [routerLink]="['/dashboard']">
-            <div class="close">
-            </div>
-            </a>
-    </div>
-    <div class="contact-details-position">
-        <div class="close-container">
+    <div class="close-cross-container">
+        <div class="cross-wrapper">
             <a [routerLink]="['/dashboard']">
                 <div class="close">
                 </div>
             </a>
         </div>
-        <div class="contact-wide">
+    </div>
+
+    <div class="mobile-close-container">
+        <div [routerLink]= "['/user', userID ,'details', 'notes']">
+            <img src="../../../assets/images/notes icon.svg"  class="icon-size-off" />
+        </div>
+        <a [routerLink]="['/dashboard']" class="mobile-close-position">
+            <div class="close">
+            </div>
+            </a>
+    </div>
+
+    <div class="main-details-container">
+        <div class="contact-details-wrapper">
             <app-contact-details></app-contact-details>
         </div>
-        <div class="notes-wide">
+
+        <div class="notes-wrapper">
             <app-notes></app-notes>
         </div>
     </div>
+
 </div>
 
+<!-- 
+<app-contact-details></app-contact-details>
+<app-notes></app-notes> -->

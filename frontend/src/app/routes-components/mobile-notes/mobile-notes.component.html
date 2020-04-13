@@ -1,0 +1,16 @@
+<app-header></app-header>
+<div class="mobile-close-container">
+    <div class="text-container">
+        <div class="text-style">
+            {{contactData.vorname}} 
+        </div>
+        <div class="text-style">
+            {{contactData.name}}
+        </div>
+    </div>
+    <a [routerLink]="['/dashboard']" class="mobile-close-position">
+        <div class="close">
+        </div>
+    </a>
+</div>
+<app-notes></app-notes>

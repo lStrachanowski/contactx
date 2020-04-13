@@ -11,6 +11,7 @@ import {NotesService} from '../../services/notes.service';
 export class NotesComponent implements OnInit {
   userID = null;
   notesData = null;
+  contactData = null;
   constructor(private route: ActivatedRoute, private notes: NotesService) {
     this.route.params.subscribe( (params: Params) => {
       this.userID = params.id;
@@ -18,9 +19,9 @@ export class NotesComponent implements OnInit {
     if (this.userID !== null) {
       this.notes.searchNotes(parseInt(this.userID, 10)).subscribe(val => {
         this.notesData = val;
-        console.log(val);
       });
     }
+
   }
 
   ngOnInit() {
