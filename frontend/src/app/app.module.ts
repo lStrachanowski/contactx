@@ -18,6 +18,7 @@ import { NotesComponent } from './components/notes/notes.component';
 import { MobileNotesComponent } from './routes-components/mobile-notes/mobile-notes.component';
 import { AddNoteComponent } from './components/add-note/add-note.component';
 import { AddContactComponent } from './components/add-contact/add-contact.component';
+import { AddNewContactComponent } from './routes-components/add-new-contact/add-new-contact.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { AddContactComponent } from './components/add-contact/add-contact.compon
     NotesComponent,
     MobileNotesComponent,
     AddNoteComponent,
-    AddContactComponent
+    AddContactComponent,
+    AddNewContactComponent
   ],
   imports: [
     BrowserModule,

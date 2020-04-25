@@ -46,10 +46,9 @@ export class NotesService {
   constructor() { }
 
   /*
-  * Is switching status to true or false , which is showing or hiding nottes form.
+  * Is switching status to true or false , which is showing or hiding notes form.
   * @param {boolean} status - show or hide form
   */
-
   changeStatus(status: boolean) {
     this.statusSource.next(status);
   }
@@ -58,7 +57,6 @@ export class NotesService {
   * Is searching for notes with given user id
   * @param {number} id - contact id
   */
-
   searchNotes(id: number) {
     if ( this.notes.length > 0 ) {
       let resultsArray = [];
