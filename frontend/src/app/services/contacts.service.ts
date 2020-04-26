@@ -17,7 +17,8 @@ export class ContactsService {
       mobile: 609900999995,
       fax: 222222222,
       other: 'Senior Executive at this company',
-      group: 'work'
+      group: 'work',
+      edit: false
    },
    {
     vorname: 'Albert',
@@ -31,7 +32,8 @@ export class ContactsService {
     mobile: 6060619191919,
     fax: 26126115615,
     other: null,
-    group: 'work'
+    group: 'work',
+    edit: false
  },
  {
   vorname: 'Olga',
@@ -45,7 +47,8 @@ export class ContactsService {
   mobile: 6060619191919,
   fax: null,
   other: null,
-  group: 'private'
+  group: 'private',
+  edit: false
 }
 
   ];
@@ -75,5 +78,13 @@ export class ContactsService {
     } else {
       return null;
     }
+  }
+
+  contactEdit(id: number) {
+    this.contacts.filter((element) => {
+      if (element.contact_id === id) {
+        element.edit = element.edit ? false : true ;
+      }
+    });
   }
 }

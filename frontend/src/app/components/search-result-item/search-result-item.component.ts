@@ -18,4 +18,8 @@ export class SearchResultItemComponent implements OnInit {
   ngOnInit() {
   }
 
+  optionsClick(id: number) {
+    this.contact.contactEdit(id);
+  }
+
 }
