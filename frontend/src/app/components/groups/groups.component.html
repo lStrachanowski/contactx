@@ -3,34 +3,35 @@
 </div>
 
 
-<div class="open-group" (click)="showPanel()" *ngIf="show">
-    <div class="group-icon-holder">
-        <img src="../../../assets/images/group.svg" class="icon-size">
+<div class="open-group" *ngIf="show">
+    <div class="group-icon-holder" (click)="showPanel()">
+        <img src="../../../assets/images/group.svg" class="icon-size" (click)="showPanel()">
     </div>
     <div class="groups-holder">
         <div class="group-items-holder">
-            <div class="group-item">
+            <!-- <div class="group-item-options">
+                <div class="edit-option">Edit</div>
+                <div class="edit-option">Delete</div>
+                <div>
+                    <img src="../../../assets/images/group-gear.svg" class="gropu-gear-icon">
+                </div>
+            </div> -->
+            <div class="group-item"  *ngFor="let group of groupList">
                 <div class="group-name">
-                    Dom (25)
+                    {{group.group_name}} ({{group.group_members.length}})
                 </div>
                 <div>
                     <img src="../../../assets/images/group-gear.svg" class="gropu-gear-icon">
                 </div>
             </div>
-            <div class="group-item">
-                <div class="group-name">
-                    Praca (147)
-                </div>
-                <div>
-                    <img src="../../../assets/images/group-gear.svg" class="gropu-gear-icon">
-                </div>
-            </div>
-            <div class="group-item">
-                <div class="group-name">
-                    Zagranica (36)
-                </div>
-                <div>
-                    <img src="../../../assets/images/group-gear.svg" class="gropu-gear-icon">
+            <div class="group-item-add-button">
+                <div class="add-button-container">
+                    <div class="add-button">
+                        +
+                    </div>
+                    <div class="add-button-text">
+                        Add group
+                    </div>
                 </div>
             </div>
         </div>

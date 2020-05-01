@@ -17,14 +17,14 @@ export class ContactsService {
       mobile: 609900999995,
       fax: 222222222,
       other: 'Senior Executive at this company',
-      group: 'work',
+      group: 'Work',
       edit: false
    },
    {
     vorname: 'Albert',
     name: 'Sosnowski-Krasikiewiczowicz',
     contact_id: 2,
-    user_id: 'abc1',
+    user_id: 'abc2',
     company: 'SPS ps.z o.o.',
     address: 'ul. Tysiąclecia 20 , 09-500 Warszawa',
     email: 'bbbbbbbbb@a.pl',
@@ -32,14 +32,14 @@ export class ContactsService {
     mobile: 6060619191919,
     fax: 26126115615,
     other: null,
-    group: 'work',
+    group: 'Work',
     edit: false
  },
  {
   vorname: 'Olga',
   name: 'Borys',
   contact_id: 3,
-  user_id: 'abc1',
+  user_id: 'abc3',
   company: null,
   address: 'Jesionowa 9/3a , 40-500 Zabrze',
   email: 'olga@wp.pl',
@@ -47,7 +47,37 @@ export class ContactsService {
   mobile: 6060619191919,
   fax: null,
   other: null,
-  group: 'private',
+  group: 'Private',
+  edit: false
+},
+{
+  vorname: 'Tom',
+  name: 'Koks',
+  contact_id: 4,
+  user_id: 'abc4',
+  company: null,
+  address: 'Bruksela EU street 4',
+  email: null,
+  phone: null,
+  mobile: 49992418408,
+  fax: null,
+  other: null,
+  group: 'School',
+  edit: false
+},
+{
+  vorname: 'Ala',
+  name: 'Kowalska',
+  contact_id: 5,
+  user_id: 'abc5',
+  company: null,
+  address: null,
+  email: null,
+  phone: null,
+  mobile: 56262549488,
+  fax: null,
+  other: null,
+  group: 'School',
   edit: false
 }
 
@@ -80,6 +110,10 @@ export class ContactsService {
     }
   }
 
+  /*
+  *Returning true when contact selected, for search results items.
+  *@param {number} id - Contact id
+  * */
   contactEdit(id: number) {
     this.contacts.filter((element) => {
       if (element.contact_id === id) {

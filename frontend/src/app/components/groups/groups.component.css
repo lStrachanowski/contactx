@@ -71,6 +71,36 @@
     background-color: white;
 }
 
+.group-item-options{
+    color: #4E587F;
+    font-size: 20px;
+    font-family: Myriad Pro;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-top: 1px solid #C5C5C5;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -1px;
+    background-color: white;
+    
+}
+
+.edit-option{
+    margin: 15px 15px;
+    cursor: pointer;
+}
+
+.group-item-add-button{
+    justify-content: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-top: 1px solid #C5C5C5;
+    background-color: white;
+    margin-left: -1px;
+}
+
 .gropu-gear-icon{
     width: 25px;
     height: 25px;
@@ -80,11 +110,55 @@
 
 .group-name{
     margin: 15px 25px;
+    cursor: pointer;
 }
+
+
 
 .group-items-holder > .group-item:first-of-type{
     border-top: 0px solid #C5C5C5;
 
+}
+
+
+.add-button{
+    background-color: #48B3DA;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #48B3DA;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25pt;
+    font-weight: 900;
+    color: white;
+    -webkit-box-shadow: 5px 5px 5px 0px rgb(231, 230, 230);
+    -moz-box-shadow: 5px 5px 5px 0px rgb(231, 230, 230);
+    box-shadow: 5px 5px 5px 0px rgb(231, 230, 230);
+    /* margin-top: 5%; */
+    cursor: pointer;
+}
+
+.add-button:hover{
+    background-color:  #FFBB46;
+    border: 1px solid  #FFBB46;
+    transition: 0.25s;
+}
+
+.add-button-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.add-button-text{
+    font-family: Myriad Pro;
+    font-size: 10pt;
+    color: #4E587F;
+    margin-top: 10%;
 }
 
 @media only screen and (max-width: 825px)  { 
