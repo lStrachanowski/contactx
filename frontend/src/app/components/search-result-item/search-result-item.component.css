@@ -1,11 +1,18 @@
+.main-wrapper{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 .result-container{
     display: flex; 
-    min-width: 70vw; 
+    min-width: 70%; 
     background-color: #CEDFF2;
     align-items: center;
     justify-content: space-evenly;
     padding: 22px;
-    margin: 2% 0%;
+    margin: 1% 0%;
     cursor: pointer;
     font-size: 27px;
     font-family: Myriad Pro;
@@ -84,7 +91,7 @@
     .result-container{
         min-width: 75vw;
         padding: 15px;
-        margin: 3.5% 0%;
+        margin: 2.5% 0%;
         font-size: 17px;
         border-radius: 18px;
     }

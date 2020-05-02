@@ -1,4 +1,4 @@
-<div *ngFor="let contact of contactList">
+<div *ngFor="let contact of contactList" class="main-wrapper">
     <div class="result-container" *ngIf = !contact.edit>
         <div class="width-constant-middle">{{contact.vorname |shortString}}</div>
         <div class="width-constant-middle">{{contact.name |shortString}}</div>

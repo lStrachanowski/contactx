@@ -1,5 +1,5 @@
 .panel-container{
-    min-width: 100vw;
+    min-width: 100%;
     min-height: 12vh;
     background-color: #EEEFF4;
     display: flex;

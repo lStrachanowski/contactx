@@ -25,6 +25,8 @@
     justify-content: center;
     flex-direction: row;
     height: 100%;
+    position: relative;
+    z-index: 1;
 }
 
 .group-icon-holder{
