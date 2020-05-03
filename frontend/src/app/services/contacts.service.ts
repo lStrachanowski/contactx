@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, BehaviorSubject} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class ContactsService {
-  contacts = [
+  private contacts = [
     {
       vorname: 'Lukasz',
       name: 'Strach',
@@ -82,13 +82,41 @@ export class ContactsService {
 }
 
   ];
+
+    /*
+  Is holding currenct contactlist.
+  */
+  private contactsHolder = new BehaviorSubject<Array<any>>(this.contacts);
+  currentContacts = this.contactsHolder.asObservable();
+
+  /*
+  *Is holding current selected group name.
+  */
+  private currentGroup = null;
   constructor() { }
 
- /*
- * Returns contacts array
- */
-  getContact() {
-    return this.contacts;
+
+  /*
+  *
+  *@param {Array<number>} group  - Array with contact ids for particular group members
+  *@param {string} groupName - current group name
+  */
+  filterGroupMembers(group: Array<number>, groupName: string) {
+    let filterResults = [];
+    if (groupName !== this.currentGroup) {
+      if ( group.length > 0) {
+        this.contacts.filter( value => {
+          if (group.includes(value.contact_id)) {
+            filterResults.push(value);
+          }
+        });
+      }
+      this.contactsHolder.next(filterResults);
+      this.currentGroup = groupName;
+    } else {
+      this.currentGroup = null;
+      this.contactsHolder.next(this.contacts);
+    }
   }
 
   /*

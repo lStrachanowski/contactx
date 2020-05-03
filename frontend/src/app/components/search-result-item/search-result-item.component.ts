@@ -12,7 +12,9 @@ import {RouterLink} from '@angular/router';
 export class SearchResultItemComponent implements OnInit {
   contactList = [];
   constructor(private contact: ContactsService) {
-    this.contactList = contact.getContact();
+    this.contact.currentContacts.subscribe(values => {
+      this.contactList = values;
+    });
   }
 
   ngOnInit() {

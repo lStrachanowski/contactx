@@ -29,6 +29,9 @@ export class GroupsService {
     group_name : 'School',
   }
 ];
+
+groupsSelectors = [];
+
   constructor() { }
 
   /*
@@ -49,7 +52,7 @@ export class GroupsService {
         });
       }
     });
-    console.log(results);
+    this.groupsSelectors = results;
     return results;
   }
 }

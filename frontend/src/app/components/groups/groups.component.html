@@ -17,7 +17,7 @@
                 </div>
             </div> -->
             <div class="group-item"  *ngFor="let group of groupList">
-                <div class="group-name">
+                <div class="group-name" (click)="groupClick(group.group_members, group.group_name)">
                     {{group.group_name}} ({{group.group_members.length}})
                 </div>
                 <div>
