@@ -16,7 +16,7 @@ export class GroupsComponent implements OnInit {
   ngOnInit() {
     this.groupList = this.groups.getGroupsNames();
     this.selectedGroupName = this.contact.currentGroup;
-    if (this.selectedGroupName !== null ){
+    if (this.selectedGroupName !== null ) {
       this.selected = true;
     }
   }
