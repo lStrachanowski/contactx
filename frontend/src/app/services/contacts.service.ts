@@ -92,7 +92,7 @@ export class ContactsService {
   /*
   *Is holding current selected group name.
   */
-  private currentGroup = null;
+  currentGroup = null;
   constructor() { }
 
 

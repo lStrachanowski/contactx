@@ -16,8 +16,9 @@
                     <img src="../../../assets/images/group-gear.svg" class="gropu-gear-icon">
                 </div>
             </div> -->
-            <div class="group-item"  *ngFor="let group of groupList">
-                <div class="group-name" (click)="groupClick(group.group_members, group.group_name)">
+            <div class="group-item"  *ngFor="let group of groupList ">
+                <div class="group-name" (click)="groupClick(group.group_members, group.group_name)" 
+                [ngClass]="{'group-name-selected': selected === true && selectedGroupName === group.group_name}">
                     {{group.group_name}} ({{group.group_members.length}})
                 </div>
                 <div>

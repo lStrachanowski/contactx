@@ -73,21 +73,22 @@
     background-color: white;
 }
 
-.group-item-options{
+.group-item-selected{
+    font-size: 22px;
+    font-weight: 900;
     color: #4E587F;
-    font-size: 20px;
     font-family: Myriad Pro;
     padding-top: 15px;
     padding-bottom: 15px;
     border-top: 1px solid #C5C5C5;
     min-width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     margin-left: -1px;
     background-color: white;
-    
 }
+
 
 .edit-option{
     margin: 15px 15px;
@@ -113,6 +114,11 @@
 .group-name{
     margin: 15px 25px;
     cursor: pointer;
+}
+
+.group-name-selected{
+    color: salmon;
+    font-weight: 900;
 }
 
 
