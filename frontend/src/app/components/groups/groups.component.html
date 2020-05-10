@@ -9,20 +9,27 @@
     </div>
     <div class="groups-holder">
         <div class="group-items-holder">
-            <!-- <div class="group-item-options">
+            <!-- If edit gear clicked -->
+            <!-- <div class="group-item">
                 <div class="edit-option">Edit</div>
                 <div class="edit-option">Delete</div>
                 <div>
                     <img src="../../../assets/images/group-gear.svg" class="gropu-gear-icon">
                 </div>
             </div> -->
+            <!-- end -->
             <div class="group-item"  *ngFor="let group of groupList ">
                 <div class="group-name" (click)="groupClick(group.group_members, group.group_name)" 
-                [ngClass]="{'group-name-selected': selected === true && selectedGroupName === group.group_name}">
+                [ngClass]="{'group-name-selected': selected === true && selectedGroupName === group.group_name}" *ngIf="!group.group_edit;else elseBlock ">
                     {{group.group_name}} ({{group.group_members.length}})
                 </div>
+                <ng-template #elseBlock>
+                    <div class="edit-option">Edit</div>
+                    <div class="edit-option">Delete</div>
+                </ng-template>
+                
                 <div>
-                    <img src="../../../assets/images/group-gear.svg" class="gropu-gear-icon">
+                    <img src="../../../assets/images/group-gear.svg" class="gropu-gear-icon" (click)="editGroupOptions(group.group_name)">
                 </div>
             </div>
             <div class="group-item-add-button">

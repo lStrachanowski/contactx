@@ -43,5 +43,12 @@ export class GroupsComponent implements OnInit {
     }
   }
 
+  editGroupOptions(groupName: string) {
+    this.groupList.filter(value => {
+      if (groupName === value.group_name) {
+        value.group_edit = value.group_edit === true ? false : true;
+      }
+    });
+  }
 
 }
