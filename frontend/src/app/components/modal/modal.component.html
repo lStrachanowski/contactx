@@ -1,0 +1,24 @@
+<div class="modal-container" #modalContainerEdit>
+    <div class="label-style">
+        Enter new group name:
+    </div>
+    <input>
+    <div class="options-style">
+        <div class="button-style" (click)="okClick('edit')">OK</div>
+        <div class="button-style" (click)="cancelClick('edit')">Cancel</div>
+    </div>
+</div>
+
+
+<div class="modal-container" #modalContainerDelete>
+    <div class="label-style">
+        Do you want to delete ?
+    </div>
+    <div class="options-style">
+        <div class="button-style" (click)="okClick('delete')">OK</div>
+        <div class="button-style" (click)="cancelClick('delete')">Cancel</div>
+    </div>
+</div>
+
+
+

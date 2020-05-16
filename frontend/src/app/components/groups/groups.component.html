@@ -24,8 +24,8 @@
                     {{group.group_name}} ({{group.group_members.length}})
                 </div>
                 <ng-template #elseBlock>
-                    <div class="edit-option">Edit</div>
-                    <div class="edit-option">Delete</div>
+                    <div class="edit-option" (click)="editClick()">Edit</div>
+                    <div class="edit-option" (click)="deleteClick()">Delete</div>
                 </ng-template>
                 
                 <div>
@@ -46,3 +46,5 @@
     
     </div>
 </div>
+
+<app-modal #modalBox></app-modal>

@@ -97,7 +97,7 @@ export class ContactsService {
 
 
   /*
-  *
+  * Is setting current selected group name and filternig members which belongs to this group.
   *@param {Array<number>} group  - Array with contact ids for particular group members
   *@param {string} groupName - current group name
   */

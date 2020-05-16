@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { GroupsService} from '../../services/groups.service';
 import {ContactsService} from '../../services/contacts.service';
+import {ModalComponent} from '../../components/modal/modal.component';
+
 @Component({
   selector: 'app-groups',
   templateUrl: './groups.component.html',
@@ -11,6 +13,9 @@ export class GroupsComponent implements OnInit {
   selected = false;
   groupList = [];
   selectedGroupName = null;
+
+
+  @ViewChild('modalBox', {static: false}) modal: ModalComponent;
   constructor(private groups: GroupsService, private contact: ContactsService) { }
 
   ngOnInit() {
@@ -43,6 +48,10 @@ export class GroupsComponent implements OnInit {
     }
   }
 
+  /*
+ * Is togling group edit status for clicked group.
+ * @param {string} groupName - group name
+ */
   editGroupOptions(groupName: string) {
     this.groupList.filter(value => {
       if (groupName === value.group_name) {
@@ -51,4 +60,17 @@ export class GroupsComponent implements OnInit {
     });
   }
 
+  /*
+  * Trigers edit dialog box.
+  */
+  editClick() {
+    this.modal.openBox('edit');
+  }
+
+  /*
+  * Trigers delete confirmation box.
+  */
+  deleteClick() {
+    this.modal.openBox('delete');
+  }
 }
