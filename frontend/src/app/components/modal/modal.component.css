@@ -79,19 +79,3 @@ input{
         margin: 15px;
     }
 }
-
-
-/* display: none;
-flex-direction: column;
-background-color: rgb(255, 255, 255);
-width: 400px;
-margin: 15px;
-font-size: 20px;
-font-family: Myriad Pro;
-position: fixed;
-z-index: 1;
-padding-top: 20px;
-align-items: center;
-left: calc(50vw - 220px);
-top: calc(50vh - 100px);
-border: 1px solid rgb(176, 176, 176); */

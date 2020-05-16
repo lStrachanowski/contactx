@@ -149,4 +149,17 @@ export class ContactsService {
       }
     });
   }
+
+    /*
+  *Delete contact from contactslist.
+  *@param {number} id - Contact id
+  * */
+  deleteContact(id: number) {
+    this.contacts = this.contacts.filter( value => {
+      if ( value.contact_id !== id) {
+        return value;
+      }
+    });
+    this.contactsHolder.next(this.contacts);
+  }
 }

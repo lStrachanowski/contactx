@@ -43,7 +43,8 @@ groupsSelectors = [];
     this.groups.forEach( groupItem => {
       if (!groupNames.includes(groupItem.group_name)) {
         groupNames.push(groupItem.group_name);
-        results.push({group_name: groupItem.group_name, group_members: [groupItem.contact_id], group_edit : false});
+        results.push({group_name: groupItem.group_name, group_members: [groupItem.contact_id], group_edit : false,
+          group_id: groupItem.group_id});
       } else {
           results.forEach(value => {
           if (value.group_name === groupItem.group_name ) {
