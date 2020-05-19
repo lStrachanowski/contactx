@@ -19,12 +19,15 @@ export class GroupsComponent implements OnInit {
   constructor(private groups: GroupsService, private contact: ContactsService) { }
 
   ngOnInit() {
-    this.groupList = this.groups.getGroupsNames();
+    this.groups.currentGroups.subscribe( value => {
+      this.groupList = this.groups.getGroupsNames();
+    });
     this.selectedGroupName = this.contact.currentGroup;
     if (this.selectedGroupName !== null ) {
       this.selected = true;
     }
   }
+
 
   /*
   * Is showing/hiding group panel.
@@ -75,4 +78,5 @@ export class GroupsComponent implements OnInit {
  deleteClick(elementValue: string, id: number) {
   this.modal.openBox('delete', {element: elementValue, element_id: id});
 }
+
 }

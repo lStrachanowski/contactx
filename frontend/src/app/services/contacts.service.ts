@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable, BehaviorSubject} from 'rxjs';
+import { GroupsService} from '../services/groups.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -93,7 +94,7 @@ export class ContactsService {
   *Is holding current selected group name.
   */
   currentGroup = null;
-  constructor() { }
+  constructor(private groups: GroupsService) { }
 
 
   /*
@@ -102,7 +103,7 @@ export class ContactsService {
   *@param {string} groupName - current group name
   */
   filterGroupMembers(group: Array<number>, groupName: string) {
-    let filterResults = [];
+    const filterResults = [];
     if (groupName !== this.currentGroup) {
       if ( group.length > 0) {
         this.contacts.filter( value => {
@@ -125,7 +126,7 @@ export class ContactsService {
  */
   searchContactId(id: number) {
     if (this.contacts.length > 0) {
-      let res = Observable.create((observer) => {
+      const res = Observable.create((observer) => {
         this.contacts.filter((element) => {
           if (element.contact_id === id) {
             observer.next(element);
@@ -161,5 +162,6 @@ export class ContactsService {
       }
     });
     this.contactsHolder.next(this.contacts);
+    this.groups.removeFromGroup(id);
   }
 }

@@ -22,7 +22,6 @@ export class ModalComponent implements OnInit {
  */
   openBox(value: string, element?: object) {
     this.currentObject = element;
-    console.log(this.currentObject);
     if (value === 'delete') {
       this.modalDelete.nativeElement.style.display = 'flex';
     }
