@@ -76,7 +76,7 @@ export class GroupsComponent implements OnInit {
   * @param {number} value - element id.
   */
  deleteClick(elementValue: string, id: number) {
-  this.modal.openBox('delete', {element: elementValue, element_id: id});
+  this.modal.openBox('delete', {element: elementValue, element_id: id, owner: 'group'});
 }
 
 }

@@ -38,7 +38,9 @@ export class ModalComponent implements OnInit {
     if (value === 'delete') {
       this.modalDelete.nativeElement.style.display = 'none';
       if (this.currentObject) {
-        this.contact.deleteContact(this.currentObject.element_id);
+        if (this.currentObject.owner === 'contact'){
+          this.contact.deleteContact(this.currentObject.element_id);
+        }
       }
     }
     if ( value === 'edit') {
