@@ -102,7 +102,7 @@ export class ContactsService {
   *@param {Array<number>} group  - Array with contact ids for particular group members
   *@param {string} groupName - current group name
   */
-  filterGroupMembers(group: Array<number>, groupName: string) {
+  filterGroupMembers(groupName: string, group?: Array<number>) {
     const filterResults = [];
     if (groupName !== this.currentGroup) {
       if ( group.length > 0) {
@@ -115,8 +115,23 @@ export class ContactsService {
       this.contactsHolder.next(filterResults);
       this.currentGroup = groupName;
     } else {
-      this.currentGroup = null;
-      this.contactsHolder.next(this.contacts);
+      /*
+      * Refreshing list when group was selected during deleting the contact.
+      */
+      if (!group) {
+        let newSelectedItems = null;
+        this.contactsHolder.subscribe( contacts => {
+          newSelectedItems = contacts.filter( item => {
+              if (item.group === this.currentGroup) {
+                return item;
+              }
+          });
+        });
+        this.contactsHolder.next(newSelectedItems);
+      } else {
+        this.currentGroup = null;
+        this.contactsHolder.next(this.contacts);
+      }
     }
   }
 
@@ -162,6 +177,7 @@ export class ContactsService {
       }
     });
     this.contactsHolder.next(this.contacts);
+    this.filterGroupMembers(this.currentGroup);
     this.groups.removeFromGroup(id);
   }
 }

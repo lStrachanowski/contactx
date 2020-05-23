@@ -40,7 +40,7 @@ export class GroupsComponent implements OnInit {
   *Shows contacts , which are assigned to clicked group.
   */
   groupClick(group: Array<number>, groupName: string) {
-    this.contact.filterGroupMembers(group, groupName);
+    this.contact.filterGroupMembers(groupName, group);
     if (groupName === this.contact.currentGroup) {
       this.selected = true;
       this.selectedGroupName = groupName;
