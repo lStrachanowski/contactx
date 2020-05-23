@@ -96,7 +96,10 @@ export class ContactsService {
   currentGroup = null;
   constructor(private groups: GroupsService) {}
 
-
+  /*
+  Is holding currenct contactlist size;
+  */
+  contactCounter = new BehaviorSubject<number>(this.contacts.length);
 
   /*
   * Is setting current selected group name and filternig members which belongs to this group.
@@ -180,9 +183,8 @@ export class ContactsService {
     this.contactsHolder.next(this.contacts);
     this.filterGroupMembers(this.currentGroup);
     this.groups.removeFromGroup(id);
+    this.contactCounter.next(this.contacts.length);
   }
 
-  getContacsHolder() {
-    return this.contactsHolder;
-  }
+
 }

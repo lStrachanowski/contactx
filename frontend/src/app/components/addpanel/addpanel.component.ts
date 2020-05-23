@@ -11,8 +11,8 @@ export class AddpanelComponent implements OnInit {
   constructor(private contact: ContactsService) { }
   contactCount = 0;
   ngOnInit() {
-    this.contact.getContacsHolder().subscribe( v => {
-      this.contactCount = v.length;
+    this.contact.contactCounter.subscribe( v => {
+      this.contactCount = v;
     });
   }
 
