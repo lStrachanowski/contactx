@@ -115,10 +115,10 @@ export class ContactsService {
       this.contactsHolder.next(filterResults);
       this.currentGroup = groupName;
     } else {
+      if (!group && this.currentGroup !== null) {
       /*
       * Refreshing list when group was selected during deleting the contact.
       */
-      if (!group) {
         let newSelectedItems = null;
         this.contactsHolder.subscribe( contacts => {
           newSelectedItems = contacts.filter( item => {
