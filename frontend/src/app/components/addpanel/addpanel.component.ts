@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ContactsService} from '../../services/contacts.service';
 
 @Component({
   selector: 'app-addpanel',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddpanelComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private contact: ContactsService) { }
+  contactCount = 0;
   ngOnInit() {
+    this.contact.getContacsHolder().subscribe( v => {
+      this.contactCount = v.length;
+    });
   }
 
 }

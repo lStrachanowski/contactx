@@ -94,7 +94,8 @@ export class ContactsService {
   *Is holding current selected group name.
   */
   currentGroup = null;
-  constructor(private groups: GroupsService) { }
+  constructor(private groups: GroupsService) {}
+
 
 
   /*
@@ -179,5 +180,9 @@ export class ContactsService {
     this.contactsHolder.next(this.contacts);
     this.filterGroupMembers(this.currentGroup);
     this.groups.removeFromGroup(id);
+  }
+
+  getContacsHolder() {
+    return this.contactsHolder;
   }
 }
