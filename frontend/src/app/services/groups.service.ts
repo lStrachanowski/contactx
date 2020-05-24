@@ -77,7 +77,11 @@ groupsSelectors = [];
     this.groupsHolder.next(this.groups);
   }
 
-
+  /*
+  *Adds new contact to groups.
+  *@param {number} id - Contact id
+  *@param {string} group - group name
+  **/
   addToGroup(id: number, group: string) {
     this.groups.push({contact_id: id , group_name: group });
     this.groupsHolder.next(this.groups);

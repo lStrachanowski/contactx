@@ -1,4 +1,4 @@
-<div class="main-container">
+<div class="main-container" *ngIf="!submited">
     <div class="close-cross-container">
         <div class="cross-wrapper">
             <a [routerLink]="['/dashboard']">
@@ -15,7 +15,7 @@
             </a>
     </div>
 </div>
-<form  (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" >
+<form  (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" *ngIf="!submited">
 <div class="inputs-holder">
     <div class="line-wrapper">
         <div class="width-50">
@@ -104,5 +104,9 @@
         Cancel
     </button>
 </div>
-
 </form>
+
+
+<div class="main-container" *ngIf="submited">
+Contact submited !
+</div>

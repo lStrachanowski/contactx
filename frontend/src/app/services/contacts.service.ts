@@ -196,7 +196,7 @@ export class ContactsService {
     const newContact = {
       vorname: form.value.vorname,
       name: form.value.name,
-      contact_id: 10,
+      contact_id: this.generateId(),
       user_id: 'abc1',
       company: form.value.company,
       address: form.value.address,
@@ -211,5 +211,19 @@ export class ContactsService {
     this.contacts.push(newContact);
     this.contactsHolder.next(this.contacts);
     this.groups.addToGroup(newContact.contact_id, newContact.group);
+    this.filterGroupMembers(this.currentGroup);
+  }
+
+  /*
+  *Geneartes contact id.
+  */
+  generateId() {
+    let temp = 0;
+    this.contacts.forEach(value => {
+      if (value.contact_id > temp) {
+        temp = value.contact_id;
+      }
+    });
+    return temp + 1;
   }
 }
