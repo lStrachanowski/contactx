@@ -210,7 +210,6 @@ export class ContactsService {
    };
     this.contacts.push(newContact);
     this.contactsHolder.next(this.contacts);
+    this.groups.addToGroup(newContact.contact_id, newContact.group);
   }
-
-
 }

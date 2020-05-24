@@ -7,25 +7,20 @@ import {Observable, BehaviorSubject} from 'rxjs';
 export class GroupsService {
 
   groups = [{
-    group_id: 1,
     contact_id: 1,
     group_name : 'Work'
   }, {
-    group_id: 1,
     contact_id: 2,
     group_name : 'Work',
   }, {
-    group_id: 2,
     contact_id: 3,
     group_name : 'Private',
   },
   {
-    group_id: 3,
     contact_id: 4,
     group_name : 'School',
   },
   {
-    group_id: 3,
     contact_id: 5,
     group_name : 'School',
   }
@@ -79,6 +74,12 @@ groupsSelectors = [];
       }
     });
     this.groups = results;
+    this.groupsHolder.next(this.groups);
+  }
+
+
+  addToGroup(id: number, group: string) {
+    this.groups.push({contact_id: id , group_name: group });
     this.groupsHolder.next(this.groups);
   }
 }
