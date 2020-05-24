@@ -15,20 +15,21 @@
             </a>
     </div>
 </div>
-
+<form  (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" >
 <div class="inputs-holder">
     <div class="line-wrapper">
         <div class="width-50">
             <div class="label-style">
-                Vorname:
+                Vorname: <span *ngIf="!vorname.valid && vorname.touched" class="alert-style">   Field required</span>
             </div>
-            <input>
+            
+            <input type="text" name="vorname" ngModel required #vorname="ngModel">
         </div>
         <div class="width-50">
             <div class="label-style">
-                Name:
+                Name: <span *ngIf="!name.valid && name.touched" class="alert-style">   Field required</span>
             </div>
-                <input>
+                <input type="text" name="name" ngModel required #name="ngModel">
         </div>
     </div>
     <div class="line-wrapper">
@@ -36,7 +37,7 @@
             <div class="label-style">
                 Company:
             </div>
-                <input>
+                <input type="text" name="company" ngModel>
         </div>
     </div>
     <div class="line-wrapper">
@@ -44,13 +45,13 @@
             <div class="label-style">
                 Address:
             </div>
-            <input>
+            <input type="text" name="address" ngModel>
         </div>
         <div class="width-50">
             <div class="label-style">
                 Email:
             </div>
-                <input>
+                <input type="email" name="email" ngModel >
         </div>
     </div>
     <div class="line-wrapper">
@@ -58,19 +59,19 @@
             <div class="label-style">
                 Phone:
             </div>
-            <input>
+            <input type="number" name="phone" ngModel>
         </div>
         <div class="width-33">
             <div class="label-style">
                 Mobile:
             </div>
-                <input>
+                <input type="number" name="mobile" ngModel>
         </div>
         <div class="width-33">
             <div class="label-style">
                 Fax:
             </div>
-                <input>
+                <input type="number" name="fax" ngModel>
         </div>
     </div>
     <div class="line-wrapper">
@@ -78,28 +79,30 @@
             <div class="label-style">
                 Other:
             </div>
-                <input>
+                <input type="text" name="other" ngModel>
         </div>
     </div>
 
     <div class="line-wrapper move-left">
         <div class="width-33">
+            <div class="label-style">
+                    Select group:
+                </div>
             <div class="select-style"> 
-                <select id="search" >
-                <option value="default">Select group</option>
-                <option value="group.group_name" *ngFor="let group of groupList" >{{group.group_name}}</option>
+                <select id="search" name="group_select" ngModel> 
+                <option [value]="group.group_name" *ngFor="let group of groupList" >{{group.group_name}}</option>
                 </select> 
             </div>
         </div>
     </div>
 </div>
 <div class="options-panel">
-    <div class="option-panel-item">
+    <button  type="submit" [disabled]="!contactForm.valid">
         OK
-    </div>
-    <div class="option-panel-item">
+    </button>
+    <button  [routerLink]="['/dashboard']">
         Cancel
-    </div>
+    </button>
 </div>
 
-    
+</form>

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Observable, BehaviorSubject} from 'rxjs';
 import { GroupsService} from '../services/groups.service';
+import {NgForm} from '@angular/forms';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -184,6 +186,30 @@ export class ContactsService {
     this.filterGroupMembers(this.currentGroup);
     this.groups.removeFromGroup(id);
     this.contactCounter.next(this.contacts.length);
+  }
+
+  /*
+  *Adds new contact to contactlist
+  *@param {NgForm} form - form with contact details.
+  **/
+  addContact(form: NgForm) {
+    const newContact = {
+      vorname: form.value.vorname,
+      name: form.value.name,
+      contact_id: 10,
+      user_id: 'abc1',
+      company: form.value.company,
+      address: form.value.address,
+      email: form.value.email,
+      phone: form.value.phone,
+      mobile: form.value.mobile,
+      fax: form.value.fax,
+      other: form.value.other,
+      group: form.value.group_select,
+      edit: false
+   };
+    this.contacts.push(newContact);
+    this.contactsHolder.next(this.contacts);
   }
 
 
