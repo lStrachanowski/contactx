@@ -102,7 +102,10 @@ export class ContactsService {
   Is holding currenct contactlist size;
   */
   contactCounter = new BehaviorSubject<number>(this.contacts.length);
-
+  /*
+  Is holding currenct contact delete status;
+  */
+  deleted = new BehaviorSubject<boolean>(false);
   /*
   * Is setting current selected group name and filternig members which belongs to this group.
   *@param {Array<number>} group  - Array with contact ids for particular group members

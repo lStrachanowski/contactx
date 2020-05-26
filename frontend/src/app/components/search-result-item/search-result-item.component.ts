@@ -27,7 +27,7 @@ export class SearchResultItemComponent implements OnInit {
     this.contact.contactEdit(id);
   }
 
-    /*
+  /*
   * Trigers delete confirmation box.
   * @param {string} element - element type.
   * @param {number} value - element id.

@@ -130,6 +130,17 @@ select{
     color: red;
 }
 
+.submited-style{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30vh;
+    color: rgb(38, 138, 38);
+    font-size: 27px;
+    font-family: Myriad Pro;
+    font-weight: 600;
+}
+
 
 @media only screen and (max-width: 825px)  { 
     .close-cross-container{

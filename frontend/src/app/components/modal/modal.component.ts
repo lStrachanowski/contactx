@@ -1,16 +1,17 @@
 import { Component, OnInit , ViewChild, ElementRef} from '@angular/core';
 import {ContactsService} from '../../services/contacts.service';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent implements OnInit {
-
+  deleted = false;
   currentObject = null;
   @ViewChild('modalContainerEdit', {static: false}) modalEdit: ElementRef;
   @ViewChild('modalContainerDelete', {static: false}) modalDelete: ElementRef;
-  constructor(private contact: ContactsService) { }
+  constructor(private contact: ContactsService, private route: Router) { }
 
   ngOnInit() {
   }
@@ -40,6 +41,11 @@ export class ModalComponent implements OnInit {
       if (this.currentObject) {
         if (this.currentObject.owner === 'contact'){
           this.contact.deleteContact(this.currentObject.element_id);
+          this.contact.deleted.next(true);
+          setTimeout(() => {
+            this.route.navigate(['/dashboard']);
+            this.contact.deleted.next(false);
+          }, 1500);
         }
       }
     }

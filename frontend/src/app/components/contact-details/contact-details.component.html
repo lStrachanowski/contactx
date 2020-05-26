@@ -103,7 +103,10 @@
     <div class="option-panel-item">
         Edit
     </div>
-    <div class="option-panel-item red">
+    <div class="option-panel-item red" (click)="deleteClick('contact')">
         Delete
     </div>
 </div>
+
+
+<app-modal #modalBox></app-modal>

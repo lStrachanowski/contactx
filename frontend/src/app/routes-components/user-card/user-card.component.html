@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <div class="main-container">
-    <div class="close-cross-container">
+    <div class="close-cross-container" *ngIf="!deleted">
         <div class="cross-wrapper">
             <a [routerLink]="['/dashboard']">
                 <div class="close">
@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="mobile-close-container">
+    <div class="mobile-close-container" *ngIf="!deleted">
         <div [routerLink]= "['/user', userID ,'details', 'notes']">
             <img src="../../../assets/images/notes icon.svg"  class="icon-size-off" />
         </div>
@@ -20,7 +20,7 @@
             </a>
     </div>
 
-    <div class="main-details-container">
+    <div class="main-details-container" *ngIf="!deleted">
         <div class="contact-details-wrapper">
             <app-contact-details></app-contact-details>
         </div>
@@ -29,5 +29,7 @@
             <app-notes></app-notes>
         </div>
     </div>
-
+    <div class="deleted-style" *ngIf="deleted">
+        Contact deleted !
+    </div>
 </div>
