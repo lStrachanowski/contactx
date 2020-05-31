@@ -21,6 +21,8 @@ import { AddContactComponent } from './components/add-contact/add-contact.compon
 import { AddNewContactComponent } from './routes-components/add-new-contact/add-new-contact.component';
 import { ModalComponent } from './components/modal/modal.component';
 import {FormsModule} from '@angular/forms';
+import { EditComponent } from './components/edit/edit.component';
+import { EditContactComponent } from './routes-components/edit-contact/edit-contact.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import {FormsModule} from '@angular/forms';
     AddNoteComponent,
     AddContactComponent,
     AddNewContactComponent,
-    ModalComponent
+    ModalComponent,
+    EditComponent,
+    EditContactComponent
   ],
   imports: [
     BrowserModule,

@@ -5,7 +5,7 @@ import {LandingPageComponent} from './routes-components/landing-page/landing-pag
 import {UserCardComponent} from './routes-components/user-card/user-card.component';
 import {MobileNotesComponent} from './routes-components/mobile-notes/mobile-notes.component';
 import {AddNewContactComponent} from './routes-components/add-new-contact/add-new-contact.component';
-
+import {EditContactComponent} from './routes-components/edit-contact/edit-contact.component';
 const routes: Routes = [
   {path: '',
   component: LandingPageComponent },
@@ -16,7 +16,9 @@ const routes: Routes = [
   {path: 'user/:id/details/notes',
   component: MobileNotesComponent},
   {path: 'add',
-  component: AddNewContactComponent }
+  component: AddNewContactComponent },
+  {path: 'edit',
+  component: EditContactComponent}
 ];
 
 @NgModule({
