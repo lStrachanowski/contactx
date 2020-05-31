@@ -17,7 +17,7 @@ const routes: Routes = [
   component: MobileNotesComponent},
   {path: 'add',
   component: AddNewContactComponent },
-  {path: 'edit',
+  {path: 'edit/:id',
   component: EditContactComponent}
 ];
 

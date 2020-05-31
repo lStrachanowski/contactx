@@ -100,7 +100,7 @@
     <div class="option-panel-item">
         Share
     </div>
-    <div class="option-panel-item">
+    <div class="option-panel-item" [routerLink]="['/edit', contactData.contact_id]">
         Edit
     </div>
     <div class="option-panel-item red" (click)="deleteClick('contact')">
