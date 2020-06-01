@@ -3,7 +3,7 @@
         <div class="width-constant-middle">{{contact.vorname |shortString}}</div>
         <div class="width-constant-middle">{{contact.name |shortString}}</div>
         <div class="bold-item width-constant-wide hide-in-mobile">{{contact.company |shortString}}</div>
-        <div class="bold-item width-constant-narrow hide-in-mobile">{{contact.group |shortString}}</div>
+        <div class="bold-item width-constant-narrow hide-in-mobile">{{ contact.group === "Default" ? "" : contact.group |shortString}}</div>
         <div class="width-constant-narrow show-in-mobile"
             [routerLink]="['/user/',contact.contact_id,'details','notes']">
             <img src="../../../assets/images/notes icon.svg" class="icons-size_off" />
