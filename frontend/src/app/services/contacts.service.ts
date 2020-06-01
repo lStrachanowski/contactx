@@ -211,6 +211,10 @@ export class ContactsService {
       group: form.value.group_select,
       edit: false
    };
+    if (form.form.value.group_select === '') {
+      newContact.group = null;
+    }
+
     this.contacts.push(newContact);
     this.contactsHolder.next(this.contacts);
     this.groups.addToGroup(newContact.contact_id, newContact.group);
