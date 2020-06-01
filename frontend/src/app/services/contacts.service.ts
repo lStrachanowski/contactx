@@ -229,4 +229,27 @@ export class ContactsService {
     });
     return temp + 1;
   }
+
+   /*
+  *Updating contact at contactslist.
+  *@param {number} id - Contact id
+  *@param {NgForm} form - form with contact details.
+  * */
+  updateContact(id: number, form: NgForm) {
+    this.contacts.filter(value => {
+      if ( value.contact_id === id) {
+        value.vorname = form.value.vorname;
+        value.name = form.value.name;
+        value.company = form.value.company;
+        value.address = form.value.address;
+        value.email = form.value.email;
+        value.phone = form.value.phone;
+        value.mobile = form.value.mobile;
+        value.fax = form.value.fax;
+        value.other = form.value.other;
+        value.group = form.value.group_select;
+        this.contactsHolder.next(this.contacts);
+      }
+    });
+  }
 }

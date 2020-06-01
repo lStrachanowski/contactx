@@ -21,7 +21,7 @@
     <!-- Visible when options clicked -->
     <div class="result-container" *ngIf = contact.edit>
         <div class="options-container">
-            <div>
+            <div [routerLink]="['/edit', contact.contact_id]">
                 Edit
             </div>
             <div class="delete"  (click)="deleteClick('contact', contact.contact_id)">
