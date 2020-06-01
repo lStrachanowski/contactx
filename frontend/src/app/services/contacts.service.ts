@@ -256,4 +256,17 @@ export class ContactsService {
       }
     });
   }
+
+  /*
+  *Updates group value after group deletion
+  *@param {string} group - group name
+  **/
+  updateGroups(group: string) {
+    this.contacts.forEach( value => {
+      if (value.group === group) {
+        value.group = 'Default';
+      }
+    });
+    this.contactsHolder.next(this.contacts);
+  }
 }

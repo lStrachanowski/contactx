@@ -1,6 +1,8 @@
 import { Component, OnInit , ViewChild, ElementRef} from '@angular/core';
 import {ContactsService} from '../../services/contacts.service';
 import {Router} from '@angular/router';
+import { GroupsService} from '../../services/groups.service';
+
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
@@ -11,7 +13,7 @@ export class ModalComponent implements OnInit {
   currentObject = null;
   @ViewChild('modalContainerEdit', {static: false}) modalEdit: ElementRef;
   @ViewChild('modalContainerDelete', {static: false}) modalDelete: ElementRef;
-  constructor(private contact: ContactsService, private route: Router) { }
+  constructor(private contact: ContactsService, private route: Router, private groups: GroupsService) { }
 
   ngOnInit() {
   }
@@ -39,13 +41,17 @@ export class ModalComponent implements OnInit {
     if (value === 'delete') {
       this.modalDelete.nativeElement.style.display = 'none';
       if (this.currentObject) {
-        if (this.currentObject.owner === 'contact'){
+        if (this.currentObject.owner === 'contact') {
           this.contact.deleteContact(this.currentObject.element_id);
           this.contact.deleted.next(true);
           setTimeout(() => {
             this.route.navigate(['/dashboard']);
             this.contact.deleted.next(false);
           }, 1500);
+        }
+        if (this.currentObject.owner === 'group') {
+          this.groups.deleteGroup(this.currentObject.element_id);
+          this.contact.updateGroups(this.currentObject.element_id);
         }
       }
     }

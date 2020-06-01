@@ -73,10 +73,10 @@ export class GroupsComponent implements OnInit {
     /*
   * Trigers delete confirmation box.
   * @param {string} element - element type.
-  * @param {number} value - element id.
+  * @param {string} groupName - group name.
   */
- deleteClick(elementValue: string, id: number) {
-  this.modal.openBox('delete', {element: elementValue, element_id: id, owner: 'group'});
+ deleteClick(elementValue: string, groupName: string) {
+  this.modal.openBox('delete', {element: elementValue, element_id: groupName, owner: 'group'});
 }
 
 }

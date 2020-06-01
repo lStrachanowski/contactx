@@ -86,4 +86,17 @@ export class GroupsService {
     this.groups.push({contact_id: id , group_name: group });
     this.groupsHolder.next(this.groups);
   }
+
+  /*
+  *Delete group
+  *@param {string} group - group name
+  **/
+  deleteGroup(group: string) {
+    this.groups.forEach(value => {
+      if (value.group_name === group) {
+        value.group_name = 'Default';
+      }
+    });
+    this.groupsHolder.next(this.groups);
+  }
 }
