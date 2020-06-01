@@ -16,6 +16,11 @@ export class SearchResultItemComponent implements OnInit {
   @ViewChild('modalBox', {static: false}) modal: ModalComponent;
   constructor(private contact: ContactsService) {
     this.contact.currentContacts.subscribe(values => {
+      values.filter( item => {
+        if (item.group === 'Default') {
+          item.group = '';
+        }
+      });
       this.contactList = values;
     });
   }

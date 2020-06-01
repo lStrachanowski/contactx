@@ -26,8 +26,6 @@ export class GroupsService {
   }
 ];
 
-groupsSelectors = [];
-
     /*
   Is holding currenct grouplist.
   */
@@ -40,14 +38,14 @@ groupsSelectors = [];
   * Returns group names and contact ids for each group members.
   */
   getGroupsNames() {
+    const noGroup = {group_name: 'Default', group_members: [], group_edit : false};
     const groupNames = [];
     const results = [];
     this.currentGroups.subscribe( groupsValues => {
       groupsValues.forEach(groupItem => {
         if (!groupNames.includes(groupItem.group_name) && groupItem.group_name !== null ) {
           groupNames.push(groupItem.group_name);
-          results.push({group_name: groupItem.group_name, group_members: [groupItem.contact_id], group_edit : false,
-            group_id: groupItem.group_id});
+          results.push({group_name: groupItem.group_name, group_members: [groupItem.contact_id], group_edit : false});
         } else {
             results.forEach(value => {
             if (value.group_name === groupItem.group_name ) {
@@ -58,7 +56,9 @@ groupsSelectors = [];
 
       });
     });
-    this.groupsSelectors = results;
+    if (!groupNames.includes('Default')) {
+      results.push(noGroup);
+    }
     return results;
 
   }

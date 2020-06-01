@@ -211,8 +211,8 @@ export class ContactsService {
       group: form.value.group_select,
       edit: false
    };
-    if (form.form.value.group_select === '') {
-      newContact.group = null;
+    if (form.form.value.group_select === 'Default') {
+      newContact.group = 'Default';
     }
 
     this.contacts.push(newContact);
