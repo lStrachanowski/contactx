@@ -53,14 +53,12 @@ export class GroupsService {
             }
           });
         }
-
       });
     });
     if (!groupNames.includes('Default')) {
       results.push(noGroup);
     }
     return results;
-
   }
 
   /*

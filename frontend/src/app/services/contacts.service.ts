@@ -213,7 +213,7 @@ export class ContactsService {
       group: form.value.group_select,
       edit: false
    };
-    if (form.form.value.group_select === 'Default') {
+    if (form.form.value.group_select === 'Default' || form.form.value.group_select === '' ) {
       newContact.group = 'Default';
     }
 
@@ -221,6 +221,7 @@ export class ContactsService {
     this.contactsHolder.next(this.contacts);
     this.groups.addToGroup(newContact.contact_id, newContact.group);
     this.filterGroupMembers(this.currentGroup);
+    this.contactCounter.next(this.contacts.length);
   }
 
   /*
