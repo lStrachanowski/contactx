@@ -20,7 +20,7 @@ export class GroupsComponent implements OnInit {
 
   ngOnInit() {
     this.groups.currentGroups.subscribe( value => {
-      this.groupList = this.groups.getGroupsNames();
+      this.groupList = value;
     });
     this.selectedGroupName = this.contact.currentGroup;
     if (this.selectedGroupName !== null ) {

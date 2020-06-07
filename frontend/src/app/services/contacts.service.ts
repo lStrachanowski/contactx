@@ -185,8 +185,6 @@ export class ContactsService {
         return value;
       }
     });
-    console.log(this.contacts);
-    console.log(this.currentGroup);
     this.contactsHolder.next(this.contacts);
     this.filterGroupMembers(this.currentGroup);
     this.groups.removeFromGroup(id);
@@ -270,7 +268,6 @@ export class ContactsService {
         value.group = 'Default';
       }
     });
-    console.log(this.contacts);
     this.contactsHolder.next(this.contacts);
   }
 }

@@ -7,23 +7,23 @@ import {Observable, BehaviorSubject} from 'rxjs';
 export class GroupsService {
 
   groups = [{
-    contact_id: 1,
-    group_name : 'Work'
-  }, {
-    contact_id: 2,
+    group_members: [1, 2],
     group_name : 'Work',
+    group_edit : false
   }, {
-    contact_id: 3,
+    group_members: [3],
     group_name : 'Private',
+    group_edit : false
   },
   {
-    contact_id: 4,
+    group_members: [4, 5],
     group_name : 'School',
+    group_edit : false
   },
   {
-    contact_id: 5,
-    group_name : 'School',
-  }
+    group_members: [],
+    group_name : 'Default',
+    group_edit : false}
 ];
 
     /*
@@ -31,34 +31,17 @@ export class GroupsService {
   */
  private groupsHolder = new BehaviorSubject<Array<any>>(this.groups);
  currentGroups = this.groupsHolder.asObservable();
-
+ groupsData = null;
   constructor() { }
 
   /*
   * Returns group names and contact ids for each group members.
   */
   getGroupsNames() {
-    const noGroup = {group_name: 'Default', group_members: [], group_edit : false};
-    const groupNames = [];
-    const results = [];
-    this.currentGroups.subscribe( groupsValues => {
-      groupsValues.forEach(groupItem => {
-        if (!groupNames.includes(groupItem.group_name) && groupItem.group_name !== null ) {
-          groupNames.push(groupItem.group_name);
-          results.push({group_name: groupItem.group_name, group_members: [groupItem.contact_id], group_edit : false});
-        } else {
-            results.forEach(value => {
-            if (value.group_name === groupItem.group_name ) {
-              value.group_members.push(groupItem.contact_id);
-            }
-          });
-        }
-      });
+    this.currentGroups.subscribe( value => {
+      this.groupsData = value;
     });
-    if (!groupNames.includes('Default')) {
-      results.push(noGroup);
-    }
-    return results;
+    return this.groupsData;
   }
 
   /*
@@ -66,22 +49,28 @@ export class GroupsService {
   *@param {number} id - Contact id
   * */
   removeFromGroup(id: number) {
-    const results = this.groups.filter( value => {
-      if (value.contact_id !== id ) {
-        return value;
-      }
-    });
-    this.groups = results;
-    this.groupsHolder.next(this.groups);
+    for (const value of this.groups) {
+      if (value.group_members.includes(id)) {
+        value.group_members = value.group_members.filter( num => {
+          if ( num !== id) {
+            return num;
+          }
+      });
+    }
+      this.groupsHolder.next(this.groups);
+    }
   }
-
   /*
   *Adds new contact to groups.
   *@param {number} id - Contact id
   *@param {string} group - group name
   **/
   addToGroup(id: number, group: string) {
-    this.groups.push({contact_id: id , group_name: group });
+    for ( const value of this.groups) {
+      if (value.group_name === group) {
+        value.group_members.push(id);
+      }
+    }
     this.groupsHolder.next(this.groups);
   }
 
@@ -90,11 +79,22 @@ export class GroupsService {
   *@param {string} group - group name
   **/
   deleteGroup(group: string) {
-    this.groups.forEach(value => {
-      if (value.group_name === group) {
-        value.group_name = 'Default';
-      }
-    });
-    this.groupsHolder.next(this.groups);
+  const results = [];
+  let tempGroupMembers = [];
+  for ( const value  of this.groups ) {
+    if (value.group_name !== group) {
+      results.push(value);
+    } else {
+      tempGroupMembers = value.group_members;
+    }
+  }
+  this.groups = results;
+  this.groupsHolder.next(results);
+  for ( const value  of this.groups ) {
+    if (value.group_name === 'Default') {
+       value.group_members.push(...tempGroupMembers);
+    }
+  }
+  this.groupsHolder.next(this.groups);
   }
 }
