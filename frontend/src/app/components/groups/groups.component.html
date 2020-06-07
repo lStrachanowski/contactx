@@ -20,7 +20,8 @@
                 </ng-template>
                 
                 <div>
-                    <img src="../../../assets/images/group-gear.svg" class="gropu-gear-icon" (click)="editGroupOptions(group.group_name)">
+                    <img src="../../../assets/images/group-gear.svg" class="gropu-gear-icon" (click)="editGroupOptions(group.group_name)" *ngIf = "group.group_name !== 'Default'">
+                    <img src="../../../assets/images/group-gear.svg" class="gropu-gear-icon" *ngIf = "group.group_name === 'Default'">
                 </div>
             </div>
             <div class="group-item-add-button">
