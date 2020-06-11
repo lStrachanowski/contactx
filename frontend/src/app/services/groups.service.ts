@@ -111,4 +111,18 @@ export class GroupsService {
     }
     this.groupsHolder.next(this.groups);
   }
+
+  /*
+  *Checks if group with given name already exist in db
+  *@param {string} group - group name
+  **/
+  checkIfGroupExist(group: string) {
+    for (const g of this.groups) {
+      if (g.group_name === group) {
+        console.log(g.group_name);
+        return false;
+        }
+      }
+    return true;
+    }
 }

@@ -267,11 +267,9 @@ export class ContactsService {
       if (value.group === group && newGroupName === undefined) {
         value.group = 'Default';
       }
-
       if (value.group === group && newGroupName ) {
         value.group = newGroupName;
       }
-
     });
     this.contactsHolder.next(this.contacts);
   }

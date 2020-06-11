@@ -30,6 +30,8 @@ export class ModalComponent implements OnInit {
     }
     if ( value === 'edit') {
       this.modalEdit.nativeElement.style.display = 'flex';
+      this.editValue = null;
+      this.editValue = this.currentObject.element_id;
     }
   }
 
@@ -58,8 +60,10 @@ export class ModalComponent implements OnInit {
     if ( value === 'edit') {
       this.modalEdit.nativeElement.style.display = 'none';
       if (this.editValue !== null && this.editValue !== '') {
-        this.groups.editGroupName(this.editValue, this.currentObject.element_id);
-        this.contact.updateGroups(this.currentObject.element_id, this.editValue);
+        if (this.groups.checkIfGroupExist(this.editValue)) {
+          this.groups.editGroupName(this.editValue, this.currentObject.element_id);
+          this.contact.updateGroups(this.currentObject.element_id, this.editValue);
+        }
       }
     }
   }
