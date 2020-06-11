@@ -65,9 +65,10 @@ export class GroupsComponent implements OnInit {
 
   /*
   * Trigers edit dialog box.
+  * @param {string} groupName - group name
   */
-  editClick() {
-    this.modal.openBox('edit');
+  editClick(groupName: string) {
+    this.modal.openBox('edit', {element: null, element_id: groupName, owner: 'group'});
   }
 
     /*

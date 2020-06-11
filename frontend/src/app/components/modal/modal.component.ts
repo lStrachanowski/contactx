@@ -1,8 +1,7 @@
 import { Component, OnInit , ViewChild, ElementRef} from '@angular/core';
 import {ContactsService} from '../../services/contacts.service';
 import {Router} from '@angular/router';
-import { GroupsService} from '../../services/groups.service';
-
+import {GroupsService} from '../../services/groups.service';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
@@ -11,6 +10,7 @@ import { GroupsService} from '../../services/groups.service';
 export class ModalComponent implements OnInit {
   deleted = false;
   currentObject = null;
+  editValue = null;
   @ViewChild('modalContainerEdit', {static: false}) modalEdit: ElementRef;
   @ViewChild('modalContainerDelete', {static: false}) modalDelete: ElementRef;
   constructor(private contact: ContactsService, private route: Router, private groups: GroupsService) { }
@@ -57,6 +57,10 @@ export class ModalComponent implements OnInit {
     }
     if ( value === 'edit') {
       this.modalEdit.nativeElement.style.display = 'none';
+      if (this.editValue !== null && this.editValue !== '') {
+        this.groups.editGroupName(this.editValue, this.currentObject.element_id);
+        this.contact.updateGroups(this.currentObject.element_id, this.editValue);
+      }
     }
   }
 

@@ -262,12 +262,18 @@ export class ContactsService {
   *Updates group value after group deletion
   *@param {string} group - group name
   **/
-  updateGroups(group: string) {
+  updateGroups(group: string, newGroupName?: string) {
     this.contacts.forEach( value => {
-      if (value.group === group) {
+      if (value.group === group && newGroupName === undefined) {
         value.group = 'Default';
       }
+
+      if (value.group === group && newGroupName ) {
+        value.group = newGroupName;
+      }
+
     });
     this.contactsHolder.next(this.contacts);
   }
+
 }

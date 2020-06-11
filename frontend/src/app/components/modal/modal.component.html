@@ -2,7 +2,7 @@
     <div class="label-style">
         Enter new group name:
     </div>
-    <input>
+    <input [(ngModel)]="editValue">
     <div class="options-style">
         <div class="button-style" (click)="okClick('edit')">OK</div>
         <div class="button-style" (click)="cancelClick('edit')">Cancel</div>

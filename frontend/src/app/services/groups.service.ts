@@ -97,4 +97,18 @@ export class GroupsService {
   }
   this.groupsHolder.next(this.groups);
   }
+
+  /*
+  *Group rename
+  *@param {string} group - new group name
+  *@param {string} currentGroup - current group name
+  **/
+  editGroupName(group: string, currentGroup: string) {
+    for ( const g of this.groups) {
+      if ( g.group_name === currentGroup) {
+        g.group_name = group;
+      }
+    }
+    this.groupsHolder.next(this.groups);
+  }
 }

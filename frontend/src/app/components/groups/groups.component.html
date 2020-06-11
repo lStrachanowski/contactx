@@ -15,7 +15,7 @@
                     {{group.group_name}} ({{group.group_members.length}})
                 </div>
                 <ng-template #elseBlock>
-                    <div class="edit-option" (click)="editClick()">Edit</div>
+                    <div class="edit-option" (click)="editClick(group.group_name)">Edit</div>
                     <div class="edit-option" (click)="deleteClick('group',group.group_name )">Delete</div>
                 </ng-template>
                 
