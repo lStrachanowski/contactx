@@ -119,7 +119,6 @@ export class GroupsService {
   checkIfGroupExist(group: string) {
     for (const g of this.groups) {
       if (g.group_name === group) {
-        console.log(g.group_name);
         return false;
         }
       }

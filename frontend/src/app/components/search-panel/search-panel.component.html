@@ -1,12 +1,12 @@
 <div class="desktop">
-        <div class="search-label">Search</div>
-        <div><input type="text" id="search" placeholder="Start typing"></div>
+        <div class="search-label" >Search</div>
+        <div><input type="text" id="search" placeholder="Start typing" (keyup)="inputValue($event)"></div>
         <div class="select-style"> 
-            <select id="search">
-              <option value="volvo">Order by</option>
-              <option value="volvo">Company</option>
-              <option value="volvo">Name</option>
-              <option value="volvo">Group</option>
+            <select id="search" (change)="filterChanged($event)">
+              <option value="default">Order by</option>
+              <option value="company">Company</option>
+              <option value="name">Name</option>
+              <option value="group">Group</option>
             </select> 
         </div>
 </div>

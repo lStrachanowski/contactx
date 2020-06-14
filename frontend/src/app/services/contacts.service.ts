@@ -274,4 +274,29 @@ export class ContactsService {
     this.contactsHolder.next(this.contacts);
   }
 
+  /*
+  *Is searching given value in contact list
+  *@param {string} searchValue - contact to search
+  *@param {string} option - searching by selected option
+  **/
+  contactSearch(searchValue: string, option: string) {
+    const temp = [];
+    if (this.currentGroup === null || this.currentGroup === 'Default') {
+      for ( const val in this.contacts) {
+        if (this.contacts[val].name.toLowerCase().includes(searchValue.toLowerCase()) ||
+            this.contacts[val].vorname.toLowerCase().includes(searchValue.toLowerCase())) {
+          temp.push(this.contacts[val]);
+        }
+      }
+    } else {
+      for ( const val in this.contacts) {
+        if ( (this.contacts[val].name.toLowerCase().includes(searchValue.toLowerCase()) ||
+        this.contacts[val].vorname.toLowerCase().includes(searchValue.toLowerCase())) &&
+        this.contacts[val].group === this.currentGroup) {
+          temp.push(this.contacts[val]);
+        }
+      }
+    }
+    this.contactsHolder.next(temp);
+  }
 }
