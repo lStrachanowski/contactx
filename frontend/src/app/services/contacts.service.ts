@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable, BehaviorSubject} from 'rxjs';
 import { GroupsService} from '../services/groups.service';
 import {NgForm} from '@angular/forms';
+import { not } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -277,23 +278,40 @@ export class ContactsService {
   /*
   *Is searching given value in contact list
   *@param {string} searchValue - contact to search
-  *@param {string} option - searching by selected option
   **/
-  contactSearch(searchValue: string, option: string) {
+  contactSearch(searchValue: string) {
+
     const temp = [];
     if (this.currentGroup === null || this.currentGroup === 'Default') {
-      for ( const val in this.contacts) {
-        if (this.contacts[val].name.toLowerCase().includes(searchValue.toLowerCase()) ||
-            this.contacts[val].vorname.toLowerCase().includes(searchValue.toLowerCase())) {
+      for (const val in this.contacts) {
+        if (this.contacts[val].company) {
+          if (this.contacts[val].company.toLowerCase().includes(searchValue.toLowerCase()) ||
+          this.contacts[val].name.toLowerCase().includes(searchValue.toLowerCase()) ||
+          this.contacts[val].vorname.toLowerCase().includes(searchValue.toLowerCase())) {
           temp.push(this.contacts[val]);
+          }
+        } else {
+          if (this.contacts[val].name.toLowerCase().includes(searchValue.toLowerCase()) ||
+          this.contacts[val].vorname.toLowerCase().includes(searchValue.toLowerCase())) {
+          temp.push(this.contacts[val]);
+          }
         }
       }
     } else {
-      for ( const val in this.contacts) {
-        if ( (this.contacts[val].name.toLowerCase().includes(searchValue.toLowerCase()) ||
-        this.contacts[val].vorname.toLowerCase().includes(searchValue.toLowerCase())) &&
-        this.contacts[val].group === this.currentGroup) {
+      for (const val in this.contacts) {
+        if (this.contacts[val].company) {
+          if ((this.contacts[val].company.toLowerCase().includes(searchValue.toLowerCase()) ||
+          this.contacts[val].name.toLowerCase().includes(searchValue.toLowerCase()) ||
+          this.contacts[val].vorname.toLowerCase().includes(searchValue.toLowerCase()))
+          && this.currentGroup === this.contacts[val].group ) {
           temp.push(this.contacts[val]);
+          }
+        } else {
+          if ((this.contacts[val].name.toLowerCase().includes(searchValue.toLowerCase()) ||
+          this.contacts[val].vorname.toLowerCase().includes(searchValue.toLowerCase())) &&
+          this.currentGroup === this.contacts[val].group ) {
+          temp.push(this.contacts[val]);
+          }
         }
       }
     }
