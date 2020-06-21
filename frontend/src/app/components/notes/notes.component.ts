@@ -18,9 +18,7 @@ export class NotesComponent implements OnInit {
       this.userID = params.id;
     });
     if (this.userID !== null) {
-      this.notes.searchNotes(parseInt(this.userID, 10)).subscribe(val => {
-        this.notesData = val;
-      });
+      this.notesData = this.notes.searchNotes(parseInt(this.userID, 10));
     }
   }
 
@@ -45,7 +43,7 @@ export class NotesComponent implements OnInit {
   /*
   *Event after clicking ok in note form
   */
-  onAddNote(){
+  onAddNote() {
     this.showForm = false;
   }
 

@@ -6,11 +6,7 @@ import {Observable, BehaviorSubject} from 'rxjs';
 })
 export class NotesService {
 
-  /*
-  Is holding add note button status.
-  */
-  // private statusSource = new BehaviorSubject<boolean>(false);
-  // currentStatus = this.statusSource.asObservable();
+
 
   /*
   Notes array.
@@ -43,6 +39,9 @@ export class NotesService {
 
   ];
 
+  private currentNontes = new BehaviorSubject<Array<any>>(this.notes);
+  getNotes = this.currentNontes.asObservable();
+
   constructor() { }
 
   /*
@@ -52,13 +51,10 @@ export class NotesService {
   searchNotes(id: number) {
     if ( this.notes.length > 0 ) {
       let resultsArray = [];
-      const res  = Observable.create((observer) => {
-        resultsArray = this.notes.filter( (element) => {
-           return element.contact_id === id;
-          });
-        observer.next(resultsArray);
-      });
-      return res;
+      resultsArray = this.notes.filter( (element) => {
+          return element.contact_id === id;
+        });
+      return resultsArray;
     } else {
       return null;
     }
