@@ -17,7 +17,18 @@
         </div>
     </div>
     <div class="add-note-window" *ngIf="showForm">
-        <app-add-note></app-add-note>
+        <div class="textarea-container">    
+            <textarea>
+            </textarea>
+        </div>
+        <div class="add-note-options">
+            <div class="add-note-options-spacing" (click)="onCancelNote()">
+                Cancel
+            </div>
+            <div class="add-note-options-spacing" (click)="onAddNote()">
+                Add
+            </div>
+        </div>
     </div>
     
     <div class="add-button-container" (click)="onAddButton()" *ngIf="!showForm">

@@ -16,7 +16,6 @@ import { UserCardComponent } from './routes-components/user-card/user-card.compo
 import { ContactDetailsComponent } from './components/contact-details/contact-details.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { MobileNotesComponent } from './routes-components/mobile-notes/mobile-notes.component';
-import { AddNoteComponent } from './components/add-note/add-note.component';
 import { AddContactComponent } from './components/add-contact/add-contact.component';
 import { AddNewContactComponent } from './routes-components/add-new-contact/add-new-contact.component';
 import { ModalComponent } from './components/modal/modal.component';
@@ -41,7 +40,6 @@ import { EditContactComponent } from './routes-components/edit-contact/edit-cont
     ContactDetailsComponent,
     NotesComponent,
     MobileNotesComponent,
-    AddNoteComponent,
     AddContactComponent,
     AddNewContactComponent,
     ModalComponent,

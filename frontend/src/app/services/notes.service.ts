@@ -9,8 +9,8 @@ export class NotesService {
   /*
   Is holding add note button status.
   */
-  private statusSource = new BehaviorSubject<boolean>(false);
-  currentStatus = this.statusSource.asObservable();
+  // private statusSource = new BehaviorSubject<boolean>(false);
+  // currentStatus = this.statusSource.asObservable();
 
   /*
   Notes array.
@@ -46,21 +46,13 @@ export class NotesService {
   constructor() { }
 
   /*
-  * Is switching status to true or false , which is showing or hiding notes form.
-  * @param {boolean} status - show or hide form
-  */
-  changeStatus(status: boolean) {
-    this.statusSource.next(status);
-  }
-
-  /*
   * Is searching for notes with given user id
   * @param {number} id - contact id
   */
   searchNotes(id: number) {
     if ( this.notes.length > 0 ) {
       let resultsArray = [];
-      let res  = Observable.create((observer) => {
+      const res  = Observable.create((observer) => {
         resultsArray = this.notes.filter( (element) => {
            return element.contact_id === id;
           });

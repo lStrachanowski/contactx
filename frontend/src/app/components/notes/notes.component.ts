@@ -12,7 +12,7 @@ export class NotesComponent implements OnInit {
   userID = null;
   notesData = null;
   contactData = null;
-  showForm: boolean;
+  showForm = false;
   constructor(private route: ActivatedRoute, private notes: NotesService) {
     this.route.params.subscribe( (params: Params) => {
       this.userID = params.id;
@@ -25,13 +25,28 @@ export class NotesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.notes.currentStatus.subscribe(val => {
-      this.showForm = val;
-    });
+
   }
 
+  /*
+  *Event after clicking add note button.
+  */
   onAddButton() {
-    this.notes.changeStatus(true);
+    this.showForm = this.showForm ? false : true;
+  }
+
+  /*
+  *Event after clicking cancel in note form
+  */
+  onCancelNote() {
+    this.showForm = false;
+  }
+
+  /*
+  *Event after clicking ok in note form
+  */
+  onAddNote(){
+    this.showForm = false;
   }
 
 }

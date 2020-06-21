@@ -121,6 +121,48 @@
 }
 
 
+
 .add-note-window{
+    margin-top: 5%;
+    width: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+textarea{
+    width: 90%;
+    height: 150px;
+    resize: none;
+    margin-top: 4%;
+    border: 1px solid rgb(173, 196, 219);
+    border-radius: 12px;
+    font-size:16px;
+}
+
+.textarea-container{
     width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.add-note-options{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    font-family: Myriad Pro;
+    font-size: 14pt;
+    color: #4E587F;
+    font-weight: bold;
+}
+
+.add-note-options-spacing{
+    margin: 2%;
+    cursor: pointer;
+}
+
+.add-note-options-spacing:hover{
+    color: #48B3DA;
 }
