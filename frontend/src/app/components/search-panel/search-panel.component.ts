@@ -6,18 +6,12 @@ import {ContactsService} from '../../services/contacts.service';
   styleUrls: ['./search-panel.component.css']
 })
 export class SearchPanelComponent implements OnInit {
-  selectedOption = 'default';
   constructor(private contact: ContactsService) { }
 
   ngOnInit() {
   }
 
   inputValue(event: any) {
-    this.contact.contactSearch(event.target.value, this.selectedOption);
+    this.contact.contactSearch(event.target.value);
   }
-
-  filterChanged(event: any) {
-    this.selectedOption = event.target.value;
-  }
-
 }
