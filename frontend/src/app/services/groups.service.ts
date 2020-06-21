@@ -124,4 +124,12 @@ export class GroupsService {
       }
     return true;
     }
+
+  /*
+  *Adds new group to group array
+  *@param {string} groupName - group name
+  **/
+    addGroup(groupName: string) {
+      this.groups.push({group_members: [], group_name : groupName , group_edit : false});
+    }
 }

@@ -20,9 +20,20 @@
     </div>
 </div>
 
+<div class="modal-container" #modalContainerAdd>
+    <div class="label-style">
+        Enter new group name:
+    </div>
+    <input [(ngModel)]="newGroupName">
+    <div class="options-style">
+        <div class="button-style" (click)="okClick('add')">OK</div>
+        <div class="button-style" (click)="cancelClick('add')">Cancel</div>
+    </div>
+</div>
+
 <div class="modal-container modal-container-alert" #modalContainerAlert>
     <div class="label-style">
-        Group with this name already exist.Please use another group name.
+        {{alertMessage}}
     </div>
     <div class="options-style">
         <div class="button-style" (click)="okClick('alert')">OK</div>

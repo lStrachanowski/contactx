@@ -11,9 +11,12 @@ export class ModalComponent implements OnInit {
   deleted = false;
   currentObject = null;
   editValue = null;
+  newGroupName = null;
+  alertMessage = '';
   @ViewChild('modalContainerEdit', {static: false}) modalEdit: ElementRef;
   @ViewChild('modalContainerDelete', {static: false}) modalDelete: ElementRef;
   @ViewChild('modalContainerAlert', {static: false}) modalAlert: ElementRef;
+  @ViewChild('modalContainerAdd', {static: false}) modalAdd: ElementRef;
   constructor(private contact: ContactsService, private route: Router, private groups: GroupsService) { }
 
   ngOnInit() {
@@ -33,6 +36,9 @@ export class ModalComponent implements OnInit {
       this.modalEdit.nativeElement.style.display = 'flex';
       this.editValue = null;
       this.editValue = this.currentObject.element_id;
+    }
+    if ( value === 'add') {
+      this.modalAdd.nativeElement.style.display = 'flex';
     }
 
   }
@@ -56,22 +62,37 @@ export class ModalComponent implements OnInit {
         if (this.currentObject.owner === 'group') {
           this.groups.deleteGroup(this.currentObject.element_id);
           this.contact.updateGroups(this.currentObject.element_id);
+          this.alertMessage = 'Group deleted.';
+          this.modalAlert.nativeElement.style.display = 'flex';
         }
       }
     }
     if ( value === 'edit') {
       this.modalEdit.nativeElement.style.display = 'none';
-      if (this.editValue !== null && this.editValue !== '') {
-        if (this.groups.checkIfGroupExist(this.editValue)) {
-          this.groups.editGroupName(this.editValue, this.currentObject.element_id);
-          this.contact.updateGroups(this.currentObject.element_id, this.editValue);
+      if (this.editValue.trim() !== null && this.editValue.trim() !== '') {
+        if (this.groups.checkIfGroupExist(this.editValue.trim())) {
+          this.groups.editGroupName(this.editValue.trim(), this.currentObject.element_id);
+          this.contact.updateGroups(this.currentObject.element_id, this.editValue.trim());
         } else {
+          this.alertMessage = 'Group with this name already exist.Please use another group name';
           this.modalAlert.nativeElement.style.display = 'flex';
         }
       }
     }
     if ( value === 'alert') {
       this.modalAlert.nativeElement.style.display = 'none';
+    }
+    if ( value === 'add') {
+      if (this.newGroupName.trim() !== null && this.newGroupName.trim() !== '') {
+        if (this.groups.checkIfGroupExist(this.newGroupName.trim())) {
+          this.groups.addGroup(this.newGroupName);
+          this.newGroupName = '';
+          this.modalAdd.nativeElement.style.display = 'none';
+        } else {
+          this.alertMessage = 'Group with this name already exist. Please use another group name';
+          this.modalAlert.nativeElement.style.display = 'flex';
+        }
+      }
     }
   }
 
@@ -85,6 +106,9 @@ export class ModalComponent implements OnInit {
     }
     if ( value === 'edit') {
       this.modalEdit.nativeElement.style.display = 'none';
+    }
+    if ( value === 'add') {
+      this.modalAdd.nativeElement.style.display = 'none';
     }
   }
 

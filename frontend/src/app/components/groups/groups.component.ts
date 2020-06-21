@@ -80,4 +80,8 @@ export class GroupsComponent implements OnInit {
   this.modal.openBox('delete', {element: elementValue, element_id: groupName, owner: 'group'});
 }
 
+addClick() {
+  this.modal.openBox('add', {element: null, element_id: null, owner: 'group'});
+}
+
 }
