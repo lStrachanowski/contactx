@@ -13,6 +13,7 @@ export class ModalComponent implements OnInit {
   editValue = null;
   @ViewChild('modalContainerEdit', {static: false}) modalEdit: ElementRef;
   @ViewChild('modalContainerDelete', {static: false}) modalDelete: ElementRef;
+  @ViewChild('modalContainerAlert', {static: false}) modalAlert: ElementRef;
   constructor(private contact: ContactsService, private route: Router, private groups: GroupsService) { }
 
   ngOnInit() {
@@ -33,6 +34,7 @@ export class ModalComponent implements OnInit {
       this.editValue = null;
       this.editValue = this.currentObject.element_id;
     }
+
   }
 
   /*
@@ -63,8 +65,13 @@ export class ModalComponent implements OnInit {
         if (this.groups.checkIfGroupExist(this.editValue)) {
           this.groups.editGroupName(this.editValue, this.currentObject.element_id);
           this.contact.updateGroups(this.currentObject.element_id, this.editValue);
+        } else {
+          this.modalAlert.nativeElement.style.display = 'flex';
         }
       }
+    }
+    if ( value === 'alert') {
+      this.modalAlert.nativeElement.style.display = 'none';
     }
   }
 

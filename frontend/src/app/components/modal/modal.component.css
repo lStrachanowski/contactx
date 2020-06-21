@@ -25,6 +25,13 @@ input{
 
 }
 
+.modal-container-alert{
+    font-size: 20px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 .label-style{
     color: rgb(61, 61, 61);
     margin-top: 5px;
