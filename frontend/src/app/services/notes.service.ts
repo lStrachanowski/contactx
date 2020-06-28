@@ -6,8 +6,6 @@ import {Observable, BehaviorSubject} from 'rxjs';
 })
 export class NotesService {
 
-
-
   /*
   Notes array.
   */
@@ -51,9 +49,11 @@ export class NotesService {
   searchNotes(id: number) {
     if ( this.notes.length > 0 ) {
       let resultsArray = [];
-      resultsArray = this.notes.filter( (element) => {
-          return element.contact_id === id;
-        });
+      this.getNotes.subscribe(value => {
+        resultsArray = value.filter( (element) => {
+            return element.contact_id === id;
+          });
+      });
       return resultsArray;
     } else {
       return null;
