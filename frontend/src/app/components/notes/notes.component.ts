@@ -11,14 +11,16 @@ import {NotesService} from '../../services/notes.service';
 export class NotesComponent implements OnInit {
   userID = null;
   notesData = null;
-  contactData = null;
   showForm = false;
+  text = '';
   constructor(private route: ActivatedRoute, private notes: NotesService) {
     this.route.params.subscribe( (params: Params) => {
       this.userID = params.id;
     });
     if (this.userID !== null) {
-      this.notesData = this.notes.searchNotes(parseInt(this.userID, 10));
+      this.notes.getNotes.subscribe(value => {
+        this.notesData = this.notes.searchNotes(value, parseInt(this.userID, 10) );
+      });
     }
   }
 
@@ -45,6 +47,7 @@ export class NotesComponent implements OnInit {
   */
   onAddNote() {
     this.showForm = false;
+    this.notes.onAddComment(this.text, parseInt(this.userID, 10));
   }
 
 }

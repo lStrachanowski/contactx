@@ -45,18 +45,34 @@ export class NotesService {
   /*
   * Is searching for notes with given user id
   * @param {number} id - contact id
+  * @param {any} arr - contactlist array , which will be filtred
   */
-  searchNotes(id: number) {
-    if ( this.notes.length > 0 ) {
+
+  searchNotes(arr: any, id: number) {
+    if ( arr.length > 0 ) {
       let resultsArray = [];
-      this.getNotes.subscribe(value => {
-        resultsArray = value.filter( (element) => {
+      resultsArray = arr.filter( (element) => {
             return element.contact_id === id;
-          });
       });
       return resultsArray;
     } else {
       return null;
     }
+  }
+
+  /*
+  * Adding comment to array
+  * @param {string} value - comment, which will be added to array.
+  * @param {number} id - contact id
+  */
+  onAddComment(value: string, id: number) {
+    const comment = {
+      contact_id: id,
+      note_id: 40,
+      text: value,
+      date: '05.06.2018'
+    };
+    this.notes.push(comment);
+    this.currentNontes.next(this.notes);
   }
 }

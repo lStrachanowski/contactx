@@ -18,7 +18,7 @@
     </div>
     <div class="add-note-window" *ngIf="showForm">
         <div class="textarea-container">    
-            <textarea>
+            <textarea [(ngModel)]="text">
             </textarea>
         </div>
         <div class="add-note-options">
