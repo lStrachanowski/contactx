@@ -24,13 +24,13 @@ export class NotesService {
     },
     {
       contact_id: 2,
-      note_id: 3,
+      note_id: 1,
       text: 'Głównie transport morski',
       date: '15.01.2018'
     },
     {
       contact_id: 2,
-      note_id: 4,
+      note_id: 2,
       text: 'Gędą zlecenia na trasie z EE do PL pod warunkiem ,że ceny zostana zredukowane o 10%. Wtedy jest gwarancja projektu',
       date: '05.06.2018'
     },
@@ -66,13 +66,30 @@ export class NotesService {
   * @param {number} id - contact id
   */
   onAddComment(value: string, id: number) {
+    const today = new Date();
     const comment = {
       contact_id: id,
-      note_id: 40,
+      note_id: this.generateNoteId(id),
       text: value,
-      date: '05.06.2018'
+      date: today.toLocaleDateString()
     };
     this.notes.push(comment);
     this.currentNontes.next(this.notes);
+  }
+
+  /*
+  * Generating note id.
+  * @param {number} id - contact id
+  */
+  generateNoteId(id: number) {
+    let temp = 0;
+    for ( const val of this.notes) {
+      if (val.contact_id === id) {
+        if ( temp < val.note_id) {
+          temp = val.note_id;
+        }
+      }
+    }
+    return temp + 1;
   }
 }
