@@ -11,7 +11,7 @@
                 <div>{{note.date}}</div> 
                 <div class="bottom-note-options">
                     <div class="option-spacing">edit</div>
-                    <div class="option-spacing red">delete</div>
+                    <div class="option-spacing red" (click)="onDeleteNote(note.note_id)">delete</div>
                 </div>
             </div>
         </div>

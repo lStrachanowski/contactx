@@ -42,6 +42,10 @@ export class NotesComponent implements OnInit {
     this.showForm = false;
   }
 
+  onDeleteNote(id: string) {
+    this.notes.deleteNote(parseInt(id, 10), parseInt(this.userID, 10));
+  }
+
   /*
   *Event after clicking ok in note form
   */

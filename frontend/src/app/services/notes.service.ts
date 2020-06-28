@@ -92,4 +92,20 @@ export class NotesService {
     }
     return temp + 1;
   }
+
+  /*
+  * Delete note
+  * @param {number} id - contact id
+  * @param {number} uid - user id
+  */
+  deleteNote(id: number, uid: number) {
+    const results = this.notes.filter(value => {
+      if (value.contact_id === uid && value.note_id === id) {
+      } else {
+        return value;
+      }
+    });
+    this.notes = results;
+    this.currentNontes.next(results);
+  }
 }
