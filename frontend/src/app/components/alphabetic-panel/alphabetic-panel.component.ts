@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ContactsService} from '../../services/contacts.service';
 
 @Component({
   selector: 'app-alphabetic-panel',
@@ -9,13 +10,17 @@ export class AlphabeticPanelComponent implements OnInit {
   letters = 'abcdefghijklmnopqrstuvwxyz';
   lettersArray = this.letters.split('');
   show = false;
-  constructor() { }
+  constructor(private contact: ContactsService) { }
 
   ngOnInit() {
   }
 
   showPanel() {
     this.show = this.show === true ? false : true;
+  }
+
+  letterClick(letter: string) {
+    this.contact.contactByLetter(letter);
   }
 
 }

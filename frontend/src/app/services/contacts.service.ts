@@ -107,6 +107,11 @@ export class ContactsService {
   Is holding currenct contact delete status;
   */
   deleted = new BehaviorSubject<boolean>(false);
+
+  /*
+  * Holds letter click status;
+  */
+  letterClicked = false;
   /*
   * Is setting current selected group name and filternig members which belongs to this group.
   *@param {Array<number>} group  - Array with contact ids for particular group members
@@ -273,6 +278,24 @@ export class ContactsService {
       }
     });
     this.contactsHolder.next(this.contacts);
+  }
+
+  /*
+  * Returns contacts vorename starting with given letter
+  *@param {string} letter - name first contact letter
+  */
+  contactByLetter(letter: string) {
+    const temp = [];
+    this.contacts.forEach(value => {
+      if ( value.name[0].toLocaleLowerCase() === letter ) {
+        temp.push(value);
+      }
+    });
+    this.contactsHolder.next(temp);
+    this.letterClicked = this.letterClicked === true ? false : true;
+    if ( this.letterClicked === false) {
+      this.contactsHolder.next(this.contacts);
+    }
   }
 
   /*

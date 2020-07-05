@@ -14,25 +14,29 @@ export class NotesService {
       contact_id: 1,
       note_id: 1,
       text: 'Ma ładunki na z HU do DK 4.0 m szerokosci dobre stawki , ale delikatny towar.',
-      date: '19.12.2019'
+      date: '19.12.2019',
+      edited: false
     },
     {
       contact_id: 1,
       note_id: 2,
       text: 'Projekt oddał komuś innemu , różnica w cenie 10%',
-      date: '20.12.2019'
+      date: '20.12.2019',
+      edited: false
     },
     {
       contact_id: 2,
       note_id: 1,
       text: 'Głównie transport morski',
-      date: '15.01.2018'
+      date: '15.01.2018',
+      edited: false
     },
     {
       contact_id: 2,
       note_id: 2,
       text: 'Gędą zlecenia na trasie z EE do PL pod warunkiem ,że ceny zostana zredukowane o 10%. Wtedy jest gwarancja projektu',
-      date: '05.06.2018'
+      date: '05.06.2018',
+      edited: false
     },
 
   ];
@@ -71,7 +75,8 @@ export class NotesService {
       contact_id: id,
       note_id: this.generateNoteId(id),
       text: value,
-      date: today.toLocaleDateString()
+      date: today.toLocaleDateString(),
+      edited: false
     };
     this.notes.push(comment);
     this.currentNontes.next(this.notes);
@@ -107,5 +112,46 @@ export class NotesService {
     });
     this.notes = results;
     this.currentNontes.next(results);
+  }
+
+  /*
+  * Edit note
+  * @param {number} id - contact id
+  * @param {number} uid - user id
+  * @param {string} text - comment text
+  */
+  editNote(id: number, uid: number, text: string) {
+    for (const value of this.notes) {
+      if (value.contact_id === uid && value.note_id === id) {
+        value.text = text;
+      }
+    }
+  }
+
+  /*
+  * Changes edit status in contact
+  * @param {number} id - contact id
+  * @param {number} uid - user id
+  */
+  editNoteStatus(id: number, uid: number) {
+    for (const value of this.notes) {
+      if (value.contact_id === uid && value.note_id === id) {
+        value.edited = value.edited ? false : true;
+      }
+    }
+    this.currentNontes.next(this.notes);
+  }
+
+  /*
+  * Returns current note text
+  * @param {number} id - contact id
+  * @param {number} uid - user id
+  */
+  noteText(id: number, uid: number) {
+    for (const value of this.notes) {
+      if (value.contact_id === uid && value.note_id === id) {
+        return value.text;
+      }
+    }
   }
 }

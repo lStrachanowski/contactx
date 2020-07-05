@@ -25,7 +25,6 @@ export class NotesComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
 
   /*
@@ -42,8 +41,30 @@ export class NotesComponent implements OnInit {
     this.showForm = false;
   }
 
+  /*
+  *Delete note
+  * @param {number} id - contact id
+  */
   onDeleteNote(id: string) {
     this.notes.deleteNote(parseInt(id, 10), parseInt(this.userID, 10));
+  }
+
+  /*
+  *Edit note
+  * @param {number} id - contact id
+  */
+  onEditNote(id: string) {
+    this.text = this.notes.noteText(parseInt(id, 10), parseInt(this.userID, 10));
+    this.notes.editNoteStatus(parseInt(id, 10), parseInt(this.userID, 10));
+  }
+
+  /*
+  * Cancel clikc event for canceling note form
+  * @param {number} id - contact id
+  */
+  cancelEdit(id: string) {
+    this.notes.editNoteStatus(parseInt(id, 10), parseInt(this.userID, 10));
+    this.text = null;
   }
 
   /*
@@ -52,6 +73,18 @@ export class NotesComponent implements OnInit {
   onAddNote() {
     this.showForm = false;
     this.notes.onAddComment(this.text, parseInt(this.userID, 10));
+    this.text = null;
+  }
+
+
+  /*
+  * Add changed note to base
+  * @param {number} id - contact id
+  */
+  onAddEditedNote(id: string) {
+    this.notes.editNote(parseInt(id, 10), parseInt(this.userID, 10), this.text);
+    this.notes.editNoteStatus(parseInt(id, 10), parseInt(this.userID, 10));
+    this.text = null;
   }
 
 }

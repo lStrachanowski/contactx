@@ -4,13 +4,27 @@
     </div>
     <div *ngFor="let note of notesData" class="loop-wrapper">
         <div class="note-container">
-            <div class="notes-message">
+            <!-- Edit box -->
+            <div class="textarea-container" *ngIf="note.edited">    
+                <textarea [(ngModel)]="text">
+                </textarea>
+            </div>
+            <div class="add-note-options" *ngIf="note.edited">
+                <div class="add-note-options-spacing" (click)="cancelEdit(note.note_id)">
+                    Cancel
+                </div>
+                <div class="add-note-options-spacing" (click)="onAddEditedNote(note.note_id)">
+                    Add
+                </div>
+            </div>
+            <!-- End of edit box -->
+            <div class="notes-message" *ngIf="!note.edited">
                 {{note.text}}
             </div>
-            <div class="bottom-note">
+            <div class="bottom-note" *ngIf="!note.edited">
                 <div>{{note.date}}</div> 
                 <div class="bottom-note-options">
-                    <div class="option-spacing">edit</div>
+                    <div class="option-spacing" (click)="onEditNote(note.note_id)">edit</div>
                     <div class="option-spacing red" (click)="onDeleteNote(note.note_id)">delete</div>
                 </div>
             </div>

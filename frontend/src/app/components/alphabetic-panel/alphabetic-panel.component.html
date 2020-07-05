@@ -1,6 +1,6 @@
 <div class="main-container">
     <div class="alphabet-container" *ngIf="show">
-        <div class="letter-style" *ngFor = "let letter of lettersArray">{{letter | uppercase}}</div>
+        <div class="letter-style" *ngFor = "let letter of lettersArray" (click)="letterClick(letter)">{{letter | uppercase}}</div>
     </div>
     <div  (click)="showPanel()" [ngClass]="{'open-container': !show, 'close-container':show}">
         <img src="../../../assets/images/down.svg" class="icon-size">
