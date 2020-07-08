@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {ModalComponent} from '../../components/modal/modal.component';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  @ViewChild('modalBox', {static: false}) modal: ModalComponent;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  openDialog() {
+    this.modal.openBox('logout');
   }
 
 }

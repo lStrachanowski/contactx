@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,ViewChild } from '@angular/core';
 import {Params} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
 import {NotesService} from '../../services/notes.service';
-
+import {ModalComponent} from '../../components/modal/modal.component';
 @Component({
   selector: 'app-notes',
   templateUrl: './notes.component.html',
@@ -13,6 +13,7 @@ export class NotesComponent implements OnInit {
   notesData = null;
   showForm = false;
   text = '';
+  @ViewChild('modalBox', {static: false}) modal: ModalComponent;
   constructor(private route: ActivatedRoute, private notes: NotesService) {
     this.route.params.subscribe( (params: Params) => {
       this.userID = params.id;
@@ -46,7 +47,8 @@ export class NotesComponent implements OnInit {
   * @param {number} id - contact id
   */
   onDeleteNote(id: string) {
-    this.notes.deleteNote(parseInt(id, 10), parseInt(this.userID, 10));
+    this.modal.openBox('note', {id: parseInt(id, 10), uid: parseInt(this.userID, 10)});
+    // this.notes.deleteNote(parseInt(id, 10), parseInt(this.userID, 10));
   }
 
   /*

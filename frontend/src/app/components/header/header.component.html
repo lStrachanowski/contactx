@@ -17,7 +17,7 @@
             <div>
                 <img src="../../../assets/images/gear.svg" class="icons-size gear-icon" >
             </div>
-            <div class="log-out-style logout-web">
+            <div class="log-out-style logout-web" (click)="openDialog()">
                 log out
             </div>
     
@@ -29,4 +29,6 @@
     </div>
 
 </div>
+
+<app-modal #modalBox></app-modal>
 

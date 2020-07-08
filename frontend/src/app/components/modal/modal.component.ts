@@ -2,6 +2,7 @@ import { Component, OnInit , ViewChild, ElementRef} from '@angular/core';
 import {ContactsService} from '../../services/contacts.service';
 import {Router} from '@angular/router';
 import {GroupsService} from '../../services/groups.service';
+import {NotesService} from '../../services/notes.service';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
@@ -17,7 +18,9 @@ export class ModalComponent implements OnInit {
   @ViewChild('modalContainerDelete', {static: false}) modalDelete: ElementRef;
   @ViewChild('modalContainerAlert', {static: false}) modalAlert: ElementRef;
   @ViewChild('modalContainerAdd', {static: false}) modalAdd: ElementRef;
-  constructor(private contact: ContactsService, private route: Router, private groups: GroupsService) { }
+  @ViewChild('modalContainerLogOut', {static: false}) modalLogOut: ElementRef;
+  @ViewChild('modalContainerNote', {static: false}) modalNote: ElementRef;
+  constructor(private contact: ContactsService, private route: Router, private groups: GroupsService, private notes: NotesService) { }
 
   ngOnInit() {
   }
@@ -39,6 +42,12 @@ export class ModalComponent implements OnInit {
     }
     if ( value === 'add') {
       this.modalAdd.nativeElement.style.display = 'flex';
+    }
+    if (value === 'logout') {
+      this.modalLogOut.nativeElement.style.display = 'flex';
+    }
+    if ( value === 'note') {
+      this.modalNote.nativeElement.style.display = 'flex';
     }
 
   }
@@ -94,6 +103,16 @@ export class ModalComponent implements OnInit {
         }
       }
     }
+    if ( value === 'logOut') {
+      this.modalLogOut.nativeElement.style.display = 'none';
+      this.route.navigate(['/']);
+    }
+    if ( value === 'note') {
+      this.modalNote.nativeElement.style.display = 'none';
+      this.notes.deleteNote(this.currentObject.id, this.currentObject.uid);
+      this.alertMessage = 'Note deleted';
+      this.modalAlert.nativeElement.style.display = 'flex';
+    }
   }
 
 /*
@@ -109,6 +128,12 @@ export class ModalComponent implements OnInit {
     }
     if ( value === 'add') {
       this.modalAdd.nativeElement.style.display = 'none';
+    }
+    if ( value === 'logOut') {
+      this.modalLogOut.nativeElement.style.display = 'none';
+    }
+    if ( value === 'note') {
+      this.modalNote.nativeElement.style.display = 'none';
     }
   }
 
