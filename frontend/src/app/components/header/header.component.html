@@ -15,14 +15,14 @@
 
         <div class="user-options-position">
             <div>
-                <img src="../../../assets/images/gear.svg" class="icons-size gear-icon" >
+                <img src="../../../assets/images/gear.svg" class="icons-size gear-icon" [routerLink]="['/settings']" >
             </div>
             <div class="log-out-style logout-web" (click)="openDialog()">
                 log out
             </div>
     
-            <div class="log-out-style logout-mobile">
-                <img src="../../../assets/images/logout.svg" class="icons-size" >
+            <div class="log-out-style logout-mobile" >
+                <img src="../../../assets/images/logout.svg" class="icons-size">
             </div>
         </div>
      

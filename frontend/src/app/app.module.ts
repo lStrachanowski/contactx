@@ -22,6 +22,8 @@ import { ModalComponent } from './components/modal/modal.component';
 import {FormsModule} from '@angular/forms';
 import { EditComponent } from './components/edit/edit.component';
 import { EditContactComponent } from './routes-components/edit-contact/edit-contact.component';
+import { SettingsComponent } from './routes-components/settings/settings.component';
+import { SettingsOptionsComponent } from './components/settings-options/settings-options.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { EditContactComponent } from './routes-components/edit-contact/edit-cont
     AddNewContactComponent,
     ModalComponent,
     EditComponent,
-    EditContactComponent
+    EditContactComponent,
+    SettingsComponent,
+    SettingsOptionsComponent
   ],
   imports: [
     BrowserModule,
