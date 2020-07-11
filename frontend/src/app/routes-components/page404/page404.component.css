@@ -1,0 +1,29 @@
+.main-container{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    font-family: Myriad Pro;
+}
+
+.logo-container{
+    width: 20vw;
+    margin: 1% 1% 10% 1%;
+}
+
+.error-style{
+    color: #54557B;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.big{
+    font-size: 80px;
+}
+
+@media only screen and (max-width: 825px) {
+    .logo-container{
+        width: 40vw;
+        margin: 1% 1% 20% 1%;
+    }
+}

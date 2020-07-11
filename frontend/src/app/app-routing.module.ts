@@ -7,6 +7,7 @@ import {MobileNotesComponent} from './routes-components/mobile-notes/mobile-note
 import {AddNewContactComponent} from './routes-components/add-new-contact/add-new-contact.component';
 import {EditContactComponent} from './routes-components/edit-contact/edit-contact.component';
 import {SettingsComponent} from './routes-components/settings/settings.component';
+import {Page404Component} from './routes-components/page404/page404.component';
 
 const routes: Routes = [
   {path: '',
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'edit/:id',
   component: EditContactComponent},
   {path: 'settings',
-  component: SettingsComponent}
+  component: SettingsComponent},
+  { path: '**', component: Page404Component }
 ];
 
 @NgModule({
