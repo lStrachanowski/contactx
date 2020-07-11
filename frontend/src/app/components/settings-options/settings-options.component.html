@@ -1,8 +1,8 @@
 <div class="main-container">
-    <div class="group-container">
+    <div class="group-container" (click)="openTab('email')">
         Email change
     </div>
-    <div class="width-input">
+    <div class="width-input" *ngIf="email" >
         <div class="label-style">
             Old email:
         </div>
@@ -21,10 +21,10 @@
 
     </div>
 
-    <div class="group-container">
+    <div class="group-container" (click)="openTab('pass')">
         Password change
     </div>
-    <div class="width-input">
+    <div class="width-input" *ngIf="pass">
         <div class="label-style">
             Old password:
         </div>
@@ -42,10 +42,10 @@
         </div>
 
     </div>
-    <div class="group-container">
+    <div class="group-container" (click)="openTab('nick')">
         Nick change
     </div>
-    <div class="width-input">
+    <div class="width-input" *ngIf="nick">
         <div class="label-style">
             Old nick:
         </div>
@@ -61,6 +61,5 @@
         <div class="button-possition">
             <button>Change</button>
         </div>
-
     </div>
 </div>
