@@ -7,7 +7,7 @@ export class UserService {
 
   login = false;
 
-    /*
+  /*
   Is holding currenct login status
   */
  private loginStatus = new BehaviorSubject<boolean>(this.login);

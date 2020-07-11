@@ -24,6 +24,7 @@ import { EditComponent } from './components/edit/edit.component';
 import { EditContactComponent } from './routes-components/edit-contact/edit-contact.component';
 import { SettingsComponent } from './routes-components/settings/settings.component';
 import { SettingsOptionsComponent } from './components/settings-options/settings-options.component';
+import { Page404Component } from './routes-components/page404/page404.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { SettingsOptionsComponent } from './components/settings-options/settings
     EditComponent,
     EditContactComponent,
     SettingsComponent,
-    SettingsOptionsComponent
+    SettingsOptionsComponent,
+    Page404Component
   ],
   imports: [
     BrowserModule,
