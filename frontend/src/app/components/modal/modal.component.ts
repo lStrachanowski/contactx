@@ -3,6 +3,7 @@ import {ContactsService} from '../../services/contacts.service';
 import {Router} from '@angular/router';
 import {GroupsService} from '../../services/groups.service';
 import {NotesService} from '../../services/notes.service';
+import {UserService} from '../../services/user.service';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
@@ -20,7 +21,8 @@ export class ModalComponent implements OnInit {
   @ViewChild('modalContainerAdd', {static: false}) modalAdd: ElementRef;
   @ViewChild('modalContainerLogOut', {static: false}) modalLogOut: ElementRef;
   @ViewChild('modalContainerNote', {static: false}) modalNote: ElementRef;
-  constructor(private contact: ContactsService, private route: Router, private groups: GroupsService, private notes: NotesService) { }
+  constructor(private contact: ContactsService, private route: Router, private groups: GroupsService,
+              private notes: NotesService, private user: UserService) { }
 
   ngOnInit() {
   }
@@ -105,7 +107,7 @@ export class ModalComponent implements OnInit {
     }
     if ( value === 'logOut') {
       this.modalLogOut.nativeElement.style.display = 'none';
-      this.route.navigate(['/']);
+      this.user.setValue(false);
     }
     if ( value === 'note') {
       this.modalNote.nativeElement.style.display = 'none';

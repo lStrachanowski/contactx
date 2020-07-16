@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {UserService} from '../../services/user.service';
 @Component({
   selector: 'app-login-register',
   templateUrl: './login-register.component.html',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginRegisterComponent implements OnInit {
   selected = 'login';
-  constructor() { }
+  constructor(private user: UserService) { }
   ngOnInit() {
   }
 
@@ -17,6 +17,10 @@ export class LoginRegisterComponent implements OnInit {
 
   registerClick() {
     this.selected = 'register';
+  }
+
+  logInButton() {
+    this.user.setValue(true);
   }
 
 }
