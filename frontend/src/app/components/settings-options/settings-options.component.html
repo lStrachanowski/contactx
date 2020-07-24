@@ -2,64 +2,93 @@
     <div class="group-container" (click)="openTab('email')">
         Email change
     </div>
-    <div class="width-input" *ngIf="email" >
-        <div class="label-style">
-            Old email:
-        </div>
-        <input type="text">
-        <div class="label-style">
-            New email:
-        </div>
-        <input type="text">
-        <div class="label-style">
-            Confirm with password:
-        </div>
-        <input type="text">
-        <div class="button-possition">
-            <button>Change</button>
-        </div>
+    <div class="width-input" *ngIf="email">
+        <form #emailChangeForm="ngForm" (ngSubmit)="onSubmitEmailChange(emailChangeForm)">
+            <div class="label-style">
+                Old email: <span *ngIf="!oldEmail.valid && oldEmail.touched" class="alert-style"> Field required</span>
+            </div>
+            <input type="email" name="oldEmail" ngModel required #oldEmail="ngModel">
+            <span *ngIf="emailChangeForm.submitted && !model.uemail ">
+                <span class="alert-style"> Invalid email</span>
+            </span>
+
+            <div class="label-style">
+                New email: <span *ngIf="!newEmail.valid && newEmail.touched" class="alert-style"> Field required</span>
+            </div>
+            <input type="email" name="newEmail" ngModel required #newEmail="ngModel">
+            <span *ngIf="emailChangeForm.submitted && !model.nemail ">
+                <span class="alert-style"> Invalid new email</span>
+            </span>
+            <div class="label-style">
+                Confirm with password: <span *ngIf="!passEmailChange.valid && passEmailChange.touched"
+                    class="alert-style"> Field
+                    required</span>
+            </div>
+            <input type="password" name="passEmailChange" ngModel required minlength="8" #passEmailChange="ngModel">
+            <span *ngIf="emailChangeForm.submitted && !model.cpass ">
+                <span class="alert-style"> Min 8 characters</span>
+            </span>
+            <div class="button-possition">
+                <button>Change</button>
+            </div>
+
+        </form>
 
     </div>
 
     <div class="group-container" (click)="openTab('pass')">
         Password change
     </div>
-    <div class="width-input" *ngIf="pass">
-        <div class="label-style">
-            Old password:
+    <form #passChangeForm="ngForm" (ngSubmit)="onSubmitPassChange(passChangeForm)">
+        <div class="width-input" *ngIf="pass">
+            <div class="label-style">
+                Old password: <span *ngIf="!oldPass.valid && oldPass.touched" class="alert-style"> Field required</span>
+            </div>
+            <input type="password" name="oldPass" ngModel required #oldPass="ngModel">
+            <span *ngIf="passChangeForm.submitted && !model.opass ">
+                <span class="alert-style"> Minimum 8 numbers</span>
+            </span>
+            <div class="label-style">
+                New password: <span *ngIf="!newPass.valid && newPass.touched" class="alert-style"> Field required</span>
+            </div>
+            <input type="password" name="newPass" ngModel required #newPass="ngModel">
+            <span *ngIf="passChangeForm.submitted && !model.npass ">
+                <span class="alert-style"> Minimum 8 numbers</span>
+            </span>
+            <div class="label-style">
+                Confirm new password: <span *ngIf="!newPassConfirmation.valid && newPassConfirmation.touched"
+                    class="alert-style"> Field required</span>
+            </div>
+            <input type="password" name="newPassConfirmation" ngModel required #newPassConfirmation="ngModel">
+            <span *ngIf="passChangeForm.submitted && !model.cnpass ">
+                <span class="alert-style"> Minimum 8 numbers</span>
+            </span>
+            <div class="button-possition">
+                <button>Change</button>
+            </div>
         </div>
-        <input type="text">
-        <div class="label-style">
-            New password:
-        </div>
-        <input type="text">
-        <div class="label-style">
-            Confirm new password:
-        </div>
-        <input type="text">
-        <div class="button-possition">
-            <button>Change</button>
-        </div>
-
-    </div>
+    </form>
     <div class="group-container" (click)="openTab('nick')">
         Nick change
     </div>
-    <div class="width-input" *ngIf="nick">
-        <div class="label-style">
-            Old nick:
+    <form #nickChangeForm="ngForm" (ngSubmit)="onSubmitNickChange(nickChangeForm)">
+        <div class="width-input" *ngIf="nick">
+            <div class="label-style">
+                Old nick: <span *ngIf="!oldNick.valid && oldNick.touched" class="alert-style"> Field required</span>
+            </div>
+            <input type="text" name="oldNick" ngModel required #oldNick="ngModel">
+            <div class="label-style">
+                New nick: <span *ngIf="!newNick.valid && newNick.touched" class="alert-style"> Field required</span>
+            </div>
+            <input type="text" name="newNick" ngModel required #newNick="ngModel">
+            <div class="label-style">
+                Confirm with password: <span *ngIf="!pass.valid && pass.touched" class="alert-style"> Field
+                    required</span>
+            </div>
+            <input type="password" name="pass" ngModel required #pass="ngModel">
+            <div class="button-possition">
+                <button>Change</button>
+            </div>
         </div>
-        <input type="text">
-        <div class="label-style">
-            New nick:
-        </div>
-        <input type="text">
-        <div class="label-style">
-            Confirm with password:
-        </div>
-        <input type="text">
-        <div class="button-possition">
-            <button>Change</button>
-        </div>
-    </div>
+    </form>
 </div>

@@ -70,12 +70,29 @@ button:hover{
     text-align: center;
 }
 
+form{
+    width:100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.alert-style{
+    color: red;
+    font-family: Myriad Pro;
+}
+
+
 @media only screen and (max-width: 825px)  {
     .group-container{
-        width:90%;
+        width:100%;
     }
     .width-input{
         width: 70%;
+    }
+
+    form{
+        width:100%;
     }
     
  }
