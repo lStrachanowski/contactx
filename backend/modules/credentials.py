@@ -1,5 +1,5 @@
-LOGIN = 'test'
-PASSWORD = 'test1'
+DBNAME = 'contactx'
+PASSWORD = 'strach0000'
 
 def return_credentials():
-    return LOGIN , PASSWORD
+    return DBNAME , PASSWORD
