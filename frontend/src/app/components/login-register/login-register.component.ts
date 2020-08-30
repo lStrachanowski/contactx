@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../services/user.service';
+import {HttpClient} from '@angular/common/http';
+
 @Component({
   selector: 'app-login-register',
   templateUrl: './login-register.component.html',
@@ -7,7 +9,7 @@ import {UserService} from '../../services/user.service';
 })
 export class LoginRegisterComponent implements OnInit {
   selected = 'login';
-  constructor(private user: UserService) { }
+  constructor(private user: UserService , private http: HttpClient) { }
   ngOnInit() {
   }
 
@@ -21,6 +23,13 @@ export class LoginRegisterComponent implements OnInit {
 
   logInButton() {
     this.user.setValue(true);
+  }
+
+  registerButtonClick() {
+    console.log('click');
+    this.http.post('http://127.0.0.1:5000/register', {data: 'test'}).subscribe( response => {
+      console.log(response);
+    });
   }
 
 }

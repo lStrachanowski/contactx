@@ -25,7 +25,7 @@ import { EditContactComponent } from './routes-components/edit-contact/edit-cont
 import { SettingsComponent } from './routes-components/settings/settings.component';
 import { SettingsOptionsComponent } from './components/settings-options/settings-options.component';
 import { Page404Component } from './routes-components/page404/page404.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +55,8 @@ import { Page404Component } from './routes-components/page404/page404.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
