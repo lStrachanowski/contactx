@@ -17,6 +17,7 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     password = Column(String)
+    email = Column(String)
     
 
 Base.metadata.create_all(engine)
@@ -27,6 +28,7 @@ class Operations(User):
     def __init__(self, user):
         self.name = user.name
         self.password = user.password
+        self.email = user.email
     
     #Adds user to databse
     def addUser(self):
@@ -34,7 +36,7 @@ class Operations(User):
         if result:
             print("Contact name exist in database")
         else:
-            newUser = User(name=self.name, password = self.password)
+            newUser = User(name=self.name, password = self.password, email = self.email)
             session.add(newUser)
             session.commit()
             print("added succesfuly")

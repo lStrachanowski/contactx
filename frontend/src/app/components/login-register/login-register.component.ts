@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {HttpClient} from '@angular/common/http';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login-register',
@@ -25,9 +26,8 @@ export class LoginRegisterComponent implements OnInit {
     this.user.setValue(true);
   }
 
-  registerButtonClick() {
-    console.log('click');
-    this.http.post('http://127.0.0.1:5000/register', {data: 'test'}).subscribe( response => {
+  onRegisterClick(form: NgForm) {
+    this.http.post('http://127.0.0.1:5000/register', form.value).subscribe( response => {
       console.log(response);
     });
   }

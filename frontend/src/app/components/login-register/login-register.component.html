@@ -12,25 +12,24 @@
         <label for="email" class="label-style">Email</label>
         <input id="email">
         <label for="password" class="label-style">Password</label>
-        <input id="password">
+        <input id="password" type="password">
 
         <div class="center-form-elements">
             <div class="password-reset-style">Forgot your password?</div> 
             <button type="submit" class="button-style" (click)="logInButton()">LOG IN</button>
         </div>
     </form>
-    <form class="form-style" *ngIf="selected === 'register'">
+    <form class="form-style" *ngIf="selected === 'register'" #registerForm="ngForm" (ngSubmit)="onRegisterClick(registerForm)">
         <label for="email" class="label-style">User name</label>
-        <input id="user_name">
+        <input id="user_name" name = "user_name" ngModel required #user_name="ngModel">
         <label for="email" class="label-style">Email</label>
-        <input id="email">
+        <input id="email" name = "email" ngModel required #email="ngModel">
         <label for="password" class="label-style">Password</label>
-        <input id="password">
+        <input id="password" type="password" name = "password" ngModel required #password="ngModel">
         <label for="password_confirmation" class="label-style">Confirm password</label>
-        <input id="password_confirmation">
-
+        <input id="password_confirmation" type="password" name = "password_confirmation" ngModel required #password_confirmation="ngModel">
         <div class="center-form-elements">
-            <button type="submit" class="button-style" (click) = "registerButtonClick()">REGISTER</button>
+            <button type="submit" class="button-style">REGISTER</button>
         </div>
     </form>
 </div>

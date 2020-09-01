@@ -23,9 +23,11 @@ def login():
 @app.route('/register', methods=['POST'])
 def register():
     if request.method == 'POST':
-        print("POST")
+        data = request.get_json()
+        user = db.User(name = data['user_name'] , password = data['password'], email = data['email'] )
+        db.Operations.addUser(user)
         return Response(dumps({
-            'content':'post content'
+            'registred':'201'
         }), mimetype='text/json')
     else:
         print("GET")
