@@ -8,28 +8,51 @@
         </div>
     </div>
 
-    <form class="form-style" *ngIf="selected === 'login'">
+    <form class="form-style" *ngIf="selected === 'login'" #loginForm="ngForm" (ngSubmit)="onLoginClick(loginForm)">
         <label for="email" class="label-style">Email</label>
-        <input id="email">
+        <input id="email" name ="email" ngModel required #email="ngModel">
+        <span *ngIf="!email.valid && email.touched" class="alert-style">  Field required</span>
+        <span *ngIf="loginForm.submitted && !loginModel.uemail ">
+            <span class="alert-style"> Incorect email</span>
+        </span>
         <label for="password" class="label-style">Password</label>
-        <input id="password" type="password">
-
+        <input id="password" name ="password" type="password" ngModel required #password="ngModel">
+        <span *ngIf="!password.valid && password.touched" class="alert-style">  Field required</span>
+        <span *ngIf="loginForm.submitted && !loginModel.cpass ">
+            <span class="alert-style"> Minimum 8 characters</span>
+        </span>
         <div class="center-form-elements">
             <div class="password-reset-style">Forgot your password?</div> 
-            <button type="submit" class="button-style" (click)="logInButton()">LOG IN</button>
+            <button type="submit" class="button-style" [disabled]="!loginForm.valid">LOG IN</button>
         </div>
     </form>
     <form class="form-style" *ngIf="selected === 'register'" #registerForm="ngForm" (ngSubmit)="onRegisterClick(registerForm)">
         <label for="email" class="label-style">User name</label>
         <input id="user_name" name = "user_name" ngModel required #user_name="ngModel">
+        <span *ngIf="!user_name.valid && user_name.touched" class="alert-style">  Field required</span>
+        <span *ngIf="registerForm.submitted && !registerModel.uname ">
+            <span class="alert-style"> Minimum 3 characters</span>
+        </span>
         <label for="email" class="label-style">Email</label>
         <input id="email" name = "email" ngModel required #email="ngModel">
+        <span *ngIf="!email.valid && email.touched" class="alert-style">  Field required</span>
+        <span *ngIf="registerForm.submitted && !registerModel.uemail ">
+            <span class="alert-style"> Invalid email</span>
+        </span>
         <label for="password" class="label-style">Password</label>
         <input id="password" type="password" name = "password" ngModel required #password="ngModel">
+        <span *ngIf="!password.valid && password.touched" class="alert-style">  Field required</span>
+        <span *ngIf="registerForm.submitted && !registerModel.upass ">
+            <span class="alert-style"> Minimum 8 characters</span>
+        </span>
         <label for="password_confirmation" class="label-style">Confirm password</label>
         <input id="password_confirmation" type="password" name = "password_confirmation" ngModel required #password_confirmation="ngModel">
+        <span *ngIf="!password_confirmation.valid && password_confirmation.touched" class="alert-style"> Field required</span>
+        <span *ngIf="registerForm.submitted && !registerModel.cpass ">
+            <span class="alert-style"> Minimum 8 characters</span>
+        </span>
         <div class="center-form-elements">
-            <button type="submit" class="button-style">REGISTER</button>
+            <button type="submit" class="button-style"  [disabled]="!registerForm.valid">REGISTER</button>
         </div>
     </form>
 </div>

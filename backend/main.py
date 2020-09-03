@@ -24,11 +24,21 @@ def login():
 def register():
     if request.method == 'POST':
         data = request.get_json()
-        user = db.User(name = data['user_name'] , password = data['password'], email = data['email'] )
-        db.Operations.addUser(user)
-        return Response(dumps({
-            'registred':'201'
-        }), mimetype='text/json')
+        name = data['user_name'] 
+        password = data['password']
+        email = data['email']
+        user = db.User(name = name , password = password, email = email)
+        print(db.Operations.checkUser(user))
+        if db.Operations.checkUser(user):
+            db.Operations.addUser(user)
+            return Response(dumps({
+                'registred':'201'
+            }), mimetype='text/json')
+        else:
+             return Response(dumps({
+                'registred':'failed',
+                'meessage' : 'User exist'
+            }), mimetype='text/json')
     else:
         print("GET")
         return "test"

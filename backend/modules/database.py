@@ -32,7 +32,7 @@ class Operations(User):
     
     #Adds user to databse
     def addUser(self):
-        result = session.query(User).filter(User.name == self.name).first()
+        result = session.query(User).filter(User.email == self.email).first()
         if result:
             print("Contact name exist in database")
         else:
@@ -41,14 +41,15 @@ class Operations(User):
             session.commit()
             print("added succesfuly")
     
-    #Is searching for user in database
-    def getUserData(self):
-        result = session.query(User).filter(User.name == self.name).first()
+    #Is searching for user or user email in database
+    def checkUser(self):
+        result = session.query(User).filter(User.email == self.email).first()
         session.commit()
         if result:
             print(result.id)
+            return False
         else:
-            print("No such user")
+            return True
 
     #Deletes user from database
     def deleteUser(self):
