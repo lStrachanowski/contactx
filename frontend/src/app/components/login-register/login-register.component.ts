@@ -48,7 +48,13 @@ export class LoginRegisterComponent implements OnInit {
       const uemail = new FormControl(form.value.email , Validators.email);
       const upass = new FormControl(form.value.password, Validators.minLength(8));
       this.loginModel = {uemail : uemail.valid, cpass: upass.valid};
-      console.log('login');
+      if (uemail.valid && upass.valid) {
+        this.http.post('http://127.0.0.1:5000/login', form.value).subscribe(response => {
+          console.log(response);
+        });
+      } else {
+        console.log('problem');
+      }
     }
   }
 
