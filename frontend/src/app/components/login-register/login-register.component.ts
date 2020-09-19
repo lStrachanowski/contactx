@@ -32,9 +32,11 @@ export class LoginRegisterComponent implements OnInit {
       const uemail = new FormControl(form.value.email , Validators.email);
       const upass = new FormControl(form.value.password, Validators.minLength(8));
       const upassConfirmation = new FormControl(form.value.password_confirmation, Validators.minLength(8));
-      this.registerModel = {uname : uname.valid, uemail : uemail.valid, upass : upass.valid , cpass: upassConfirmation.valid};
+      const arePassordsTheSame = form.value.password === form.value.password_confirmation;
+      this.registerModel = {uname : uname.valid, uemail : uemail.valid, upass : upass.valid , cpass: upassConfirmation.valid,
+      theSamePass: arePassordsTheSame };
       if (uname.valid === true && uemail.valid === true && upass.valid === true && upassConfirmation.valid === true ) {
-        if (form.value.password === form.value.password_confirmation) {
+        if (arePassordsTheSame) {
             this.http.post('http://127.0.0.1:5000/register', form.value).subscribe( response => {
             console.log(response);
           });
@@ -52,8 +54,6 @@ export class LoginRegisterComponent implements OnInit {
         this.http.post('http://127.0.0.1:5000/login', form.value).subscribe(response => {
           console.log(response);
         });
-      } else {
-        console.log('problem');
       }
     }
   }

@@ -51,6 +51,9 @@
         <span *ngIf="registerForm.submitted && !registerModel.cpass ">
             <span class="alert-style"> Minimum 8 characters</span>
         </span>
+        <span *ngIf="registerForm.submitted && !registerModel.theSamePass ">
+            <span class="alert-style"> Password needs to be the same</span>
+        </span>
         <div class="center-form-elements">
             <button type="submit" class="button-style"  [disabled]="!registerForm.valid">REGISTER</button>
         </div>
