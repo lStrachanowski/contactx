@@ -3,6 +3,8 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 import modules.credentials as credentials
 from passlib.apps import custom_app_context as psw_context
+import secrets
+from datetime import datetime
 
 engine = create_engine("postgresql://postgres:"+credentials.PASSWORD + "@localhost/" + credentials.DBNAME)
 conn = engine.connect()
@@ -19,6 +21,8 @@ class User(Base):
     name = Column(String)
     password = Column(String)
     email = Column(String)
+    token = Column(String)
+    timestamp = Column(String)
 
     # Is hashing user password before adding to database
     def hash_password(self,password):
@@ -38,6 +42,8 @@ class Operations(User):
         self.name = user.name
         self.password = user.password
         self.email = user.email
+        self.token = user.token
+        self.timestamp = user.timestamp
     
     #Adds user to databse
     def addUser(self):
@@ -49,7 +55,7 @@ class Operations(User):
             newUser = User(name=self.name, password = self.password, email = self.email)
             session.add(newUser)
             session.commit()
-            print("added succesfuly")
+            print("User succesfuly added ")
     
     #Is searching for user email in database
     def checkUser(self):
@@ -66,9 +72,29 @@ class Operations(User):
         if result:
             session.delete(result)
             session.commit()
-            print("deleted succesfuly")
+            print("User  succesfuly deleted")
         else:
-            print("delete failed")
+            print("User delete failed")
+    
+    def updateUser(self, token, timestamp):
+        try:
+            result = session.query(User).filter(User.email == self.email).first()
+            result.token = token
+            result.timestamp = timestamp
+            session.commit()
+            print("User data updated succesfuly")
+            return True
+        except:
+            print("User data update faild")
+            return False
+
+
+#Generates token with expiration date
+def generateToken(length):
+    token = secrets.token_urlsafe(length)
+    expiration_time = datetime.now().timestamp() + 600
+    return token , expiration_time
+
 
 
 

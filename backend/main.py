@@ -1,4 +1,4 @@
-from flask import Flask,Response
+from flask import Flask,Response,jsonify
 from json import dumps
 from flask import request
 import modules.database as db
@@ -23,11 +23,21 @@ def login():
         password = data['password']
         user = db.User(email=email,password=password)
         if db.Operations.checkUser(user):
-            user.verify_password(user)
-            return Response(dumps({
-                    'code':'200',
-                    'message' : 'OK'
-                }), mimetype='text/json'),200
+            if user.verify_password(user):
+                token, expiration = db.generateToken(32)
+                if db.Operations.updateUser(user, token, expiration):
+                    return  jsonify({'token':token, 'expiration': expiration})
+                else:
+                    return Response(dumps({
+                    'code':'400',
+                    'message' : 'Something went wrong with connecting to database'
+                    }), mimetype='text/json'),400
+            else:
+                return Response(dumps({
+                'code':'400',
+                'message' : 'Wrong password'
+            }), mimetype='text/json'),400
+
         else:
             return Response(dumps({
                 'code':'400',
