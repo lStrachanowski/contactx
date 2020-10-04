@@ -80,10 +80,10 @@ export class ContactsService {
   initializeData(contactList) {
     this.contacts = [];
     for (const e of contactList) {
-      console.log(e);
       this.contacts.push(e);
     }
     this.contactsHolder.next(this.contacts);
+    this.contactCounter.next(this.contacts.length);
   }
 
   /*
