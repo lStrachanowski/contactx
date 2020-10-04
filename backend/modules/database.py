@@ -96,6 +96,15 @@ def generateToken(length):
     return token , expiration_time
 
 
+def checkTokenInBase(token):
+    result = session.query(User).filter(User.token == token).first()
+    session.commit()
+    if result.token == token:
+        return True
+    else:
+        print("Token verification failed")
+        return False
+
 
 
 

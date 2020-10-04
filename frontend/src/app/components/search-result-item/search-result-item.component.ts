@@ -14,7 +14,7 @@ export class SearchResultItemComponent implements OnInit {
   contactList = [];
 
   @ViewChild('modalBox', {static: false}) modal: ModalComponent;
-  constructor(private contact: ContactsService) {
+  constructor( private contact: ContactsService) {
     this.contact.currentContacts.subscribe(values => {
       this.contactList = values;
     });

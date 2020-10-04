@@ -26,6 +26,8 @@ import { SettingsComponent } from './routes-components/settings/settings.compone
 import { SettingsOptionsComponent } from './components/settings-options/settings-options.component';
 import { Page404Component } from './routes-components/page404/page404.component';
 import { HttpClientModule } from '@angular/common/http';
+import {CookieService} from 'ngx-cookie-service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +60,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

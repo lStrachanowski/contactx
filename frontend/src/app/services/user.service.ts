@@ -7,7 +7,7 @@ import { Router, CanActivate } from '@angular/router';
 })
 export class UserService implements CanActivate {
 
-  loginStatius = false;
+  loginStatius = true;
 
   /*
   Is holding currenct login status

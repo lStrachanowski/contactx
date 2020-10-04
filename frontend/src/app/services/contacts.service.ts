@@ -8,84 +8,7 @@ import { not } from '@angular/compiler/src/output/output_ast';
   providedIn: 'root'
 })
 export class ContactsService {
-  private contacts = [
-    {
-      vorname: 'Lukasz',
-      name: 'Strach',
-      contact_id: 1,
-      user_id: 'abc1',
-      company: 'Pol Transport and Forwarding sp. z o.o. sp. k',
-      address: 'ul. Bla bla 4 , 40-400 Katowice',
-      email: 'a@a.pl',
-      phone: 323523254,
-      mobile: 609900999995,
-      fax: 222222222,
-      other: 'Senior Executive at this company',
-      group: 'Work',
-      edit: false
-   },
-   {
-    vorname: 'Albert',
-    name: 'Sosnowski-Krasikiewiczowicz',
-    contact_id: 2,
-    user_id: 'abc2',
-    company: 'SPS ps.z o.o.',
-    address: 'ul. Tysiąclecia 20 , 09-500 Warszawa',
-    email: 'bbbbbbbbb@a.pl',
-    phone: 520002553,
-    mobile: 6060619191919,
-    fax: 26126115615,
-    other: null,
-    group: 'Work',
-    edit: false
- },
- {
-  vorname: 'Olga',
-  name: 'Borys',
-  contact_id: 3,
-  user_id: 'abc3',
-  company: null,
-  address: 'Jesionowa 9/3a , 40-500 Zabrze',
-  email: 'olga@wp.pl',
-  phone: null,
-  mobile: 6060619191919,
-  fax: null,
-  other: null,
-  group: 'Private',
-  edit: false
-},
-{
-  vorname: 'Tom',
-  name: 'Koks',
-  contact_id: 4,
-  user_id: 'abc4',
-  company: null,
-  address: 'Bruksela EU street 4',
-  email: null,
-  phone: null,
-  mobile: 49992418408,
-  fax: null,
-  other: null,
-  group: 'School',
-  edit: false
-},
-{
-  vorname: 'Ala',
-  name: 'Kowalska',
-  contact_id: 5,
-  user_id: 'abc5',
-  company: null,
-  address: null,
-  email: null,
-  phone: null,
-  mobile: 56262549488,
-  fax: null,
-  other: null,
-  group: 'School',
-  edit: false
-}
-
-  ];
+  private contacts = [];
 
     /*
   Is holding currenct contactlist.
@@ -148,6 +71,19 @@ export class ContactsService {
         this.contactsHolder.next(this.contacts);
       }
     }
+  }
+
+  /*
+  Initialize data received from server.
+  * @param {Array<Object>} contactList - list with contacts
+  */
+  initializeData(contactList) {
+    this.contacts = [];
+    for (const e of contactList) {
+      console.log(e);
+      this.contacts.push(e);
+    }
+    this.contactsHolder.next(this.contacts);
   }
 
   /*
