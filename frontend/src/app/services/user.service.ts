@@ -12,7 +12,7 @@ export class UserService implements CanActivate {
   /*
   Is holding currenct login status
   */
- private loginStatus = new BehaviorSubject<boolean>(this.loginStatius);
+ loginStatus = new BehaviorSubject<boolean>(this.loginStatius);
  currentLoginStatus = this.loginStatus.asObservable();
 
 constructor( public router: Router) {

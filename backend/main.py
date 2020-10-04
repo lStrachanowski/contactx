@@ -17,9 +17,6 @@ def login():
         email = request.args.get('email')
         password = request.args.get('password')
         user = db.User(email=email,password=password)
-        # db.Operations.addUser(user)
-        # db.Operations.getUserData(user)
-        # db.Operations.deleteUser(user)
     if request.method == 'POST':
         data = request.get_json()
         email = data['email'] 
@@ -61,7 +58,6 @@ def register():
 def dashboard():
     data = request.get_json()
     token = data['token'] 
-    print(token)
     if request.method == 'POST':
         data = [{"vorname": 'Lukasz',
         "name": 'Strach',
@@ -97,3 +93,11 @@ def dashboard():
         else:
             return 'no token ?'
 
+@app.route('/tokentime', methods=['POST','GET'])
+def tokentime():
+    if request.method == 'POST':
+        data = request.get_json()
+        token = data['token'] 
+        check = db.checkTokenInBase(token,time=True)
+        return json.dumps({"validity": check })
+    
