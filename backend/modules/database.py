@@ -1,5 +1,5 @@
-from sqlalchemy import create_engine, Column, Integer, String
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
+from sqlalchemy.orm import sessionmaker,relationship
 from sqlalchemy.ext.declarative import declarative_base
 import modules.credentials as credentials
 from passlib.apps import custom_app_context as psw_context
@@ -23,6 +23,7 @@ class User(Base):
     email = Column(String)
     token = Column(String)
     timestamp = Column(String)
+    children = relationship("Contact")
 
     # Is hashing user password before adding to database
     def hash_password(self,password):
@@ -34,6 +35,49 @@ class User(Base):
         return psw_context.verify( self.password, result.password)
 
 Base.metadata.create_all(engine)
+
+class Contact(Base):
+    __tablename__ = 'contacts'
+    contact_id = Column(Integer, primary_key=True)
+    id = Column(Integer, ForeignKey('users.id'))
+    name = Column(String)
+    vorname = Column(String)
+    company = Column(String)
+    address = Column(String)
+    email = Column(String)
+    phone = Column(String)
+    mobile = Column(String)
+    fax = Column(String)
+    other = Column(String)
+    group = Column(String)
+Base.metadata.create_all(engine)
+
+class ContactsOperations(Contact):
+        #Class initialization data
+    def __init__(self, contact):
+        self.contact_id = contact.contact_id
+        self.id = contact.id
+        self.name = contact.name
+        self.vorname = contact.vorname
+        self.address = contact.address
+        self.email = contact.email
+        self.phone = contact.phone
+        self.mobile - contact.mobile
+        self.fax = contact.fax
+        self.other = contact.other
+        self.group = contact.group
+
+    def addContact(self, token):
+        user_id = getUserIdFromToken(token)
+        result = session.query(Contact).filter(Contact.contact_id == self.contact_id).first()
+        if result:
+            print("Contact name exist in database")
+        else:
+            newContact = Contact( id = user_id, name = self.name, vorname = self.vorname, company = self.company,  address = self.address,  email = self.email,  
+                                    phone = self.phone, mobile = self.mobile,  fax = self.fax,  other = self.other,  group = self.group )
+            session.add(newContact)
+            session.commit()
+            print("Contact succesfuly added ")
 
 class Operations(User):
 
@@ -112,6 +156,10 @@ def checkTokenInBase(token, time=False):
             print("Token verification failed")
             return False
 
+def getUserIdFromToken(token):
+        result = session.query(User).filter(User.token == token).first()
+        session.commit()
+        return result.id
 
 
 

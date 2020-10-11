@@ -2,14 +2,12 @@ from flask import Flask
 import json 
 from flask import request
 import modules.database as db
-from flask_cors import CORS
+from flask_cors import CORS , cross_origin
 from flask import jsonify
 from flask import make_response
 app = Flask(__name__)
+app.config['CORS_HEADERS'] = 'Content-Type'
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
-
-
-
 
 @app.route('/login', methods=['POST','GET'])
 def login():
@@ -46,7 +44,7 @@ def register():
         user = db.User(name = name , password = password, email = email)
         if not db.Operations.checkUser(user):
             db.Operations.addUser(user)
-            return make_response(jsonify({'error': 'User registred'}), 201)
+            return make_response(jsonify({'success': 'User registred'}), 200)
         else:
             return make_response(jsonify({'error': 'User exist'}), 201)
     else:
@@ -101,3 +99,26 @@ def tokentime():
         check = db.checkTokenInBase(token,time=True)
         return json.dumps({"validity": check })
     
+
+@app.route('/addcontact', methods=['POST','GET'])
+def addcontact():
+    if request.method == 'POST':
+        data = request.get_json()['form_value']
+        name = data['name']
+        vorname = data['vorname']
+        company = data['company']
+        address = data['address']
+        email = data['email']
+        phone = data['phone']
+        mobile = data['mobile']
+        fax = data['fax']
+        other = data['other']
+        group = data['group_select']
+        contact = db.Contact(name=name, vorname=vorname, company=company, address=address, email=email, phone=phone,
+        mobile=mobile, fax=fax, other=other, group=group )
+        db.ContactsOperations.addContact(contact, request.get_json()['token'])
+        return json.dumps(data)
+    else:
+        print("GET")
+        return "test"
+

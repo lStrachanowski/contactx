@@ -141,7 +141,7 @@ export class ContactsService {
     const newContact = {
       vorname: form.value.vorname,
       name: form.value.name,
-      contact_id: this.generateId(),
+      contact_id: form.value.id,
       user_id: 'abc1',
       company: form.value.company,
       address: form.value.address,

@@ -14,7 +14,7 @@ import {UserService} from '../../services/user.service';
 export class DashboardComponent implements OnInit {
 
   constructor(
-    private http: HttpClient, private cookieService: CookieService,private contact: ContactsService, private user: UserService ) {
+    private http: HttpClient, private cookieService: CookieService, private contact: ContactsService, private user: UserService ) {
   }
 
   ngOnInit() {
@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
       } else {
         this.user.loginStatus.next(false);
       }
-    }); }, 1000);
+    }); }, 30000);
     this.user.currentLoginStatus.subscribe( value => {
       if (!value) {
         clearInterval(refresh);
