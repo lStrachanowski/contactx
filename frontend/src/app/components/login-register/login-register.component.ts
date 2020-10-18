@@ -16,7 +16,9 @@ export class LoginRegisterComponent implements OnInit {
 
   loginModel = {};
   registerModel = {};
-
+  showForms = true;
+  showRegisterMessage = false;
+  formMessage = '';
   constructor(private user: UserService , private http: HttpClient, private cookieService: CookieService, private router: Router) { }
   ngOnInit() {
   }
@@ -41,7 +43,11 @@ export class LoginRegisterComponent implements OnInit {
       if (uname.valid === true && uemail.valid === true && upass.valid === true && upassConfirmation.valid === true ) {
         if (arePassordsTheSame) {
             this.http.post('http://127.0.0.1:5000/register', form.value).subscribe( response => {
-            console.log(response);
+            this.showForms = false;
+            this.showRegisterMessage = true;
+          }, error => {
+            this.showForms = false;
+            this.formMessage = error.error.error;
           });
         }
       }
@@ -61,9 +67,23 @@ export class LoginRegisterComponent implements OnInit {
             this.cookieService.set('expiration', expiration );
             this.user.setValue(true);
             this.router.navigate(['/dashboard']);
-          }, error => console.log(error.error.error));
+          },
+          error => {
+            this.showForms = false;
+            this.formMessage = error.error.error;
+            }
+          );
       }
     }
+  }
+  returnToForm() {
+    this.showForms = true;
+  }
+
+  goToLogin() {
+    this.showForms = true;
+    this.selected = 'login';
+    this.showRegisterMessage = false;
   }
 
 }

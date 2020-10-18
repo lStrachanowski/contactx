@@ -25,7 +25,7 @@ def login():
                 token, expiration = db.generateToken(32)
                 if db.Operations.updateUser(user, token, expiration):
                     data = {"token":token, "expiration": expiration}
-                    return  jsonify([data])
+                    return  jsonify([data]),200
                 else:
                     return make_response(jsonify({'error': 'Something went wrong with connecting to database'}), 400)
             else:
@@ -46,7 +46,7 @@ def register():
             db.Operations.addUser(user)
             return make_response(jsonify({'success': 'User registred'}), 200)
         else:
-            return make_response(jsonify({'error': 'User exist'}), 201)
+            return make_response(jsonify({'error': 'User exist'}), 400)
     else:
         print("GET")
         return "test"

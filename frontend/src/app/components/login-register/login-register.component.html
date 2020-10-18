@@ -1,4 +1,5 @@
 <div class="main-container">
+    <span *ngIf="showForms">
     <div class="form-switch">
         <div class="form-button" [ngClass]="{'form-button-selected': selected === 'login'}" (click)="loginClick()">
             Login
@@ -7,7 +8,7 @@
             Register
         </div>
     </div>
-
+  
     <form class="form-style" *ngIf="selected === 'login'" #loginForm="ngForm" (ngSubmit)="onLoginClick(loginForm)">
         <label for="email" class="label-style">Email</label>
         <input id="email" name ="email" ngModel required #email="ngModel">
@@ -58,4 +59,22 @@
             <button type="submit" class="button-style"  [disabled]="!registerForm.valid">REGISTER</button>
         </div>
     </form>
+</span>
+<span *ngIf="!showForms && !showRegisterMessage">
+    <div class="center-form-elements">
+        <div class="error-style">Upss..</div>
+        <div class="error-style">{{formMessage}} </div>
+    </div>
+    <div class="center-form-elements">
+        <button type="submit" class="button-style" (click)="returnToForm()">OK</button>
+    </div>
+</span>
+<span *ngIf="showRegisterMessage && selected ==='register'">
+    <div class="center-form-elements">
+        <div class="error-style">Account registred :)</div>
+    </div>
+    <div class="center-form-elements">
+        <button type="submit" class="button-style" (click)="goToLogin()">Login</button>
+    </div>
+</span>
 </div>

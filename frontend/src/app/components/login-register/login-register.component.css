@@ -104,6 +104,15 @@ button:disabled{
     color: red;
 }
 
+.error-style{
+    color: #54557B;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.big{
+    font-size: 80px;
+}
 
 @media only screen and (max-width: 825px) {
 
