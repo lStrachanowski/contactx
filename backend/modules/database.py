@@ -5,6 +5,7 @@ import modules.credentials as credentials
 from passlib.apps import custom_app_context as psw_context
 import secrets
 from datetime import datetime
+import json 
 
 engine = create_engine("postgresql://postgres:"+credentials.PASSWORD + "@localhost/" + credentials.DBNAME)
 conn = engine.connect()
@@ -50,6 +51,7 @@ class Contact(Base):
     fax = Column(String)
     other = Column(String)
     group = Column(String)
+    edit = Column(String)
 Base.metadata.create_all(engine)
 
 class ContactsOperations(Contact):
@@ -66,6 +68,7 @@ class ContactsOperations(Contact):
         self.fax = contact.fax
         self.other = contact.other
         self.group = contact.group
+        self.edit = contact.edit
 
     def addContact(self, token):
         user_id = getUserIdFromToken(token)
@@ -74,10 +77,11 @@ class ContactsOperations(Contact):
             print("Contact name exist in database")
         else:
             newContact = Contact( id = user_id, name = self.name, vorname = self.vorname, company = self.company,  address = self.address,  email = self.email,  
-                                    phone = self.phone, mobile = self.mobile,  fax = self.fax,  other = self.other,  group = self.group )
+                                    phone = self.phone, mobile = self.mobile,  fax = self.fax,  other = self.other,  group = self.group, edit = self.edit )
             session.add(newContact)
             session.commit()
             print("Contact succesfuly added ")
+
 
 class Operations(User):
 
@@ -139,12 +143,11 @@ def generateToken(length):
     expiration_time = datetime.now().timestamp() + 600
     return token , expiration_time
 
-
+#Checks if token is valid 
 def checkTokenInBase(token, time=False):
     result = session.query(User).filter(User.token == token).first()
     session.commit()
     if time:
-        print(float(result.timestamp) - datetime.now().timestamp())
         if float(result.timestamp) > (datetime.now().timestamp()):
             return True
         else:
@@ -156,10 +159,21 @@ def checkTokenInBase(token, time=False):
             print("Token verification failed")
             return False
 
+#Returns user id based on token
 def getUserIdFromToken(token):
         result = session.query(User).filter(User.token == token).first()
         session.commit()
         return result.id
+
+#Returns contact form database based on user token. Contacts are already in json format.
+def getUserContacts(token):
+        result = session.query(Contact).filter(Contact.id == getUserIdFromToken(token))
+        session.commit()
+        values = []
+        fields = ["vorname", "name" ,"contact_id" ,"user_id", "company", "address", "email" ,"phone" ,"mobile" ,"fax" ,"other", "group", "edit"]
+        for v in result:
+            values.append(dict(zip(fields,(v.vorname, v.name, v.contact_id, v.id, v.company, v.address, v.email, v.phone, v.mobile, v.fax, v.other, v.group, v.edit ))))
+        return json.dumps(values)
 
 
 

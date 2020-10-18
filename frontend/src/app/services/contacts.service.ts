@@ -80,6 +80,7 @@ export class ContactsService {
   initializeData(contactList) {
     this.contacts = [];
     for (const e of contactList) {
+      e.edit = e.edit === 'false' ? false : true;
       this.contacts.push(e);
     }
     this.contactsHolder.next(this.contacts);
@@ -142,7 +143,7 @@ export class ContactsService {
       vorname: form.value.vorname,
       name: form.value.name,
       contact_id: form.value.id,
-      user_id: 'abc1',
+      user_id: '',
       company: form.value.company,
       address: form.value.address,
       email: form.value.email,

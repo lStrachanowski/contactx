@@ -57,37 +57,9 @@ def dashboard():
     data = request.get_json()
     token = data['token'] 
     if request.method == 'POST':
-        data = [{"vorname": 'Lukasz',
-        "name": 'Strach',
-        "contact_id": 1,
-        "user_id": 'abc1',
-        "company": 'Pol Transport and Forwarding sp. z o.o. sp. k',
-        "address": 'ul. Bla bla 4 , 40-400 Katowice',
-        "email": 'a@a.pl',
-        "phone": 323523254,
-        "mobile": 609900999995,
-        "fax": 222222222,
-        "other": 'Senior Executive at this company',
-        "group": 'Work',
-        "edit": False},
-        {
-        "vorname": 'Olga',
-        "name": 'Borys',
-        "contact_id": 3,
-        "user_id": 'abc3',
-        "company": '',
-        "address": 'Jesionowa 9/3a , 40-500 Zabrze',
-        "email": 'olga@wp.pl',
-        "phone": '',
-        "mobile": 6060619191919,
-        "fax": '',
-        "other": '',
-        "group": 'Private',
-        "edit": False}]
-        
-        
+        data = db.getUserContacts(token)
         if db.checkTokenInBase(token):
-            return json.dumps(data)
+            return data
         else:
             return 'no token ?'
 
@@ -114,8 +86,9 @@ def addcontact():
         fax = data['fax']
         other = data['other']
         group = data['group_select']
+        edit = False
         contact = db.Contact(name=name, vorname=vorname, company=company, address=address, email=email, phone=phone,
-        mobile=mobile, fax=fax, other=other, group=group )
+        mobile=mobile, fax=fax, other=other, group=group, edit = edit )
         db.ContactsOperations.addContact(contact, request.get_json()['token'])
         return json.dumps(data)
     else:
