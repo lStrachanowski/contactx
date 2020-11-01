@@ -2,4 +2,5 @@
 <app-addpanel></app-addpanel>
 <app-search-panel></app-search-panel>
 <app-groups class="group-position"></app-groups>
-<app-search-result-item></app-search-result-item> 
+<app-loading *ngIf="loadingData"></app-loading>
+<app-search-result-item *ngIf="!loadingData"></app-search-result-item> 

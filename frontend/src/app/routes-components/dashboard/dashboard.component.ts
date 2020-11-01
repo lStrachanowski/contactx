@@ -13,6 +13,7 @@ import {UserService} from '../../services/user.service';
 })
 export class DashboardComponent implements OnInit {
 
+  loadingData = true;
   constructor(
     private http: HttpClient, private cookieService: CookieService, private contact: ContactsService, private user: UserService ) {
   }
@@ -21,6 +22,9 @@ export class DashboardComponent implements OnInit {
     const cookieToken = this.cookieService.get('token');
     this.http.post('http://127.0.0.1:5000/dashboard', { token : cookieToken }).subscribe( response => {
       this.contact.initializeData(response);
+      this.loadingData = false;
+    }, error => {
+      this.loadingData = true;
     });
     const refresh = setInterval(() => {
       this.http.post('http://127.0.0.1:5000/tokentime', { token : cookieToken }).subscribe( response => {
