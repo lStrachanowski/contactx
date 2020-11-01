@@ -22,7 +22,10 @@
         <span *ngIf="loginForm.submitted && !loginModel.cpass ">
             <span class="alert-style"> Minimum 8 characters</span>
         </span>
-        <div class="center-form-elements">
+        <div class="center-form-elements" *ngIf="loginWaiting">
+            <app-loading></app-loading>
+        </div>
+        <div class="center-form-elements" *ngIf="!loginWaiting">
             <div class="password-reset-style">Forgot your password?</div> 
             <button type="submit" class="button-style" [disabled]="!loginForm.valid">LOG IN</button>
         </div>
@@ -55,7 +58,10 @@
         <span *ngIf="registerForm.submitted && !registerModel.theSamePass ">
             <span class="alert-style"> Password needs to be the same</span>
         </span>
-        <div class="center-form-elements">
+        <div class="center-form-elements" *ngIf="registerWaiting">
+            <app-loading></app-loading>
+        </div>
+        <div class="center-form-elements" *ngIf="!registerWaiting" >
             <button type="submit" class="button-style"  [disabled]="!registerForm.valid">REGISTER</button>
         </div>
     </form>
@@ -77,4 +83,5 @@
         <button type="submit" class="button-style" (click)="goToLogin()">Login</button>
     </div>
 </span>
+
 </div>

@@ -27,6 +27,7 @@ import { SettingsOptionsComponent } from './components/settings-options/settings
 import { Page404Component } from './routes-components/page404/page404.component';
 import { HttpClientModule } from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import {CookieService} from 'ngx-cookie-service';
     EditContactComponent,
     SettingsComponent,
     SettingsOptionsComponent,
-    Page404Component
+    Page404Component,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
