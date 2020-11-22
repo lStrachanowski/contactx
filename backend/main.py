@@ -63,6 +63,17 @@ def dashboard():
         else:
             return 'no token ?'
 
+@app.route('/groups', methods=['POST','GET'])
+def groups():
+    data = request.get_json()
+    token = data['token'] 
+    if request.method == 'POST':
+        groups = db.getUserGroups(token)
+        if db.checkTokenInBase(token):
+            return groups
+        else:
+            return 'no token ?'
+
 @app.route('/tokentime', methods=['POST','GET'])
 def tokentime():
     if request.method == 'POST':

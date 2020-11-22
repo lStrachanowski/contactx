@@ -176,6 +176,23 @@ def getUserContacts(token):
         return json.dumps(values)
 
 
+def getUserGroups(token):
+        result = session.query(Contact).filter(Contact.id == getUserIdFromToken(token))
+        session.commit()
+        group_names = []
+        values = []
+        values.append({"group_members": [], "group_name":"Default" , "group_edit":"false"})
+        for v in result:
+            if v.group not in group_names:
+                group_names.append(v.group)
+                values.append({"group_members": [v.contact_id], "group_name":v.group , "group_edit":"false"})
+            else:
+                for item in values:
+                    if item["group_name"] == v.group:
+                        item["group_members"].append(v.contact_id)
+        return json.dumps(values)
+
+
 
 
 

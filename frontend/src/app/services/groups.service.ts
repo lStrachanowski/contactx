@@ -1,30 +1,14 @@
 import { Injectable } from '@angular/core';
 import {Observable, BehaviorSubject} from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class GroupsService {
 
-  groups = [{
-    group_members: [1, 2],
-    group_name : 'Work',
-    group_edit : false
-  }, {
-    group_members: [3],
-    group_name : 'Private',
-    group_edit : false
-  },
-  {
-    group_members: [4, 5],
-    group_name : 'School',
-    group_edit : false
-  },
-  {
-    group_members: [],
-    group_name : 'Default',
-    group_edit : false}
-];
+  groups = [];
 
     /*
   Is holding currenct grouplist.
@@ -33,6 +17,18 @@ export class GroupsService {
  currentGroups = this.groupsHolder.asObservable();
  groupsData = null;
   constructor() { }
+
+  /*Initialize data received from server.
+  * @param {Array<Object>} groupList - list with groups
+  */
+  initializeGroups(groupList) {
+    this.groups = [];
+    for (const value of groupList) {
+      value.group_edit = value.group_edit === 'false' ? false : true;
+      this.groups.push(value);
+    }
+    this.groupsHolder.next(this.groups);
+  }
 
   /*
   * Returns group names and contact ids for each group members.
@@ -132,4 +128,8 @@ export class GroupsService {
     addGroup(groupName: string) {
       this.groups.push({group_members: [], group_name : groupName , group_edit : false});
     }
+
+    // extractGroupsData(){
+
+    // }
 }

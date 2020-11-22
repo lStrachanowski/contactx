@@ -5,7 +5,7 @@ import {HttpClient } from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
 import {ContactsService} from '../../services/contacts.service';
 import {UserService} from '../../services/user.service';
-
+import { GroupsService} from '../../services/groups.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -15,13 +15,20 @@ export class DashboardComponent implements OnInit {
 
   loadingData = true;
   constructor(
-    private http: HttpClient, private cookieService: CookieService, private contact: ContactsService, private user: UserService ) {
+    private http: HttpClient, private cookieService: CookieService, private contact: ContactsService, private user: UserService,
+    private groups: GroupsService  ) {
   }
 
   ngOnInit() {
     const cookieToken = this.cookieService.get('token');
     this.http.post('http://127.0.0.1:5000/dashboard', { token : cookieToken }).subscribe( response => {
       this.contact.initializeData(response);
+      this.loadingData = false;
+    }, error => {
+      this.loadingData = true;
+    });
+    this.http.post('http://127.0.0.1:5000/groups', { token : cookieToken }).subscribe( response => {
+      this.groups.initializeGroups(response);
       this.loadingData = false;
     }, error => {
       this.loadingData = true;

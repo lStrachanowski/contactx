@@ -85,6 +85,7 @@ export class ContactsService {
     }
     this.contactsHolder.next(this.contacts);
     this.contactCounter.next(this.contacts.length);
+    this.filterGroupMembers(this.currentGroup);
   }
 
   /*
