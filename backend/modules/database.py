@@ -12,7 +12,7 @@ conn = engine.connect()
 Session = sessionmaker(bind=engine)
 session = Session()
 Base = declarative_base()
-
+Base.metadata.create_all(engine)
 
 
 class User(Base):
@@ -35,8 +35,6 @@ class User(Base):
         result = session.query(User).filter(User.email == self.email).first()
         return psw_context.verify( self.password, result.password)
 
-Base.metadata.create_all(engine)
-
 class Contact(Base):
     __tablename__ = 'contacts'
     contact_id = Column(Integer, primary_key=True)
@@ -52,7 +50,6 @@ class Contact(Base):
     other = Column(String)
     group = Column(String)
     edit = Column(String)
-Base.metadata.create_all(engine)
 
 class ContactsOperations(Contact):
         #Class initialization data
