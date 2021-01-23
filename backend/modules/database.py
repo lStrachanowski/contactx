@@ -143,7 +143,6 @@ def generateToken(length):
 #Checks if token is valid 
 def checkTokenInBase(token, time=False):
     result = session.query(User).filter(User.token == token).first()
-    session.commit()
     if time:
         if float(result.timestamp) > (datetime.now().timestamp()):
             return True
@@ -159,13 +158,11 @@ def checkTokenInBase(token, time=False):
 #Returns user id based on token
 def getUserIdFromToken(token):
         result = session.query(User).filter(User.token == token).first()
-        session.commit()
         return result.id
 
 #Returns contact form database based on user token. Contacts are already in json format.
 def getUserContacts(token):
         result = session.query(Contact).filter(Contact.id == getUserIdFromToken(token))
-        session.commit()
         values = []
         fields = ["vorname", "name" ,"contact_id" ,"user_id", "company", "address", "email" ,"phone" ,"mobile" ,"fax" ,"other", "group", "edit"]
         for v in result:
@@ -175,7 +172,6 @@ def getUserContacts(token):
 
 def getUserGroups(token):
         result = session.query(Contact).filter(Contact.id == getUserIdFromToken(token))
-        session.commit()
         group_names = []
         values = []
         values.append({"group_members": [], "group_name":"Default" , "group_edit":"false"})
