@@ -6,6 +6,8 @@ from passlib.apps import custom_app_context as psw_context
 import secrets
 from datetime import datetime
 import json 
+from flask import jsonify
+from flask import make_response
 
 engine = create_engine("postgresql://postgres:"+credentials.PASSWORD + "@localhost/" + credentials.DBNAME)
 conn = engine.connect()
@@ -78,6 +80,8 @@ class ContactsOperations(Contact):
             session.add(newContact)
             session.commit()
             print("Contact succesfuly added ")
+
+
 
 
 class Operations(User):
@@ -187,5 +191,9 @@ def getUserGroups(token):
 
 
 
-
-
+def deleteContact(token,contactId):
+    user_id = getUserIdFromToken(token)
+    session.query(Contact).filter(Contact.id == user_id, Contact.contact_id == contactId).delete()
+    session.commit()
+    print("Contact deleted")
+    return make_response(jsonify({'success': 'Contact deleted'}), 200)

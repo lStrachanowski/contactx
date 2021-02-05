@@ -57,9 +57,9 @@ def dashboard():
     data = request.get_json()
     token = data['token'] 
     if request.method == 'POST':
-        data = db.getUserContacts(token)
+        contactsData = db.getUserContacts(token)
         if db.checkTokenInBase(token):
-            return data
+            return contactsData
         else:
             return 'no token ?'
 
@@ -102,6 +102,19 @@ def addcontact():
         mobile=mobile, fax=fax, other=other, group=group, edit = edit )
         db.ContactsOperations.addContact(contact, request.get_json()['token'])
         return json.dumps(data)
+    else:
+        print("GET")
+        return "test"
+
+
+@app.route('/deletecontact', methods=['POST','GET'])
+def deletecontact():
+    if request.method == 'POST':
+        data = request.get_json()
+        # contact_id = data['contactId']
+        # print(int(contact_id), data['token'])
+        db.deleteContact(data['token'],int(data['contactId']))
+        return make_response(jsonify({'success': 'Contact deleted'}), 200)
     else:
         print("GET")
         return "test"

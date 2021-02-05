@@ -3,7 +3,8 @@ import {Observable, BehaviorSubject} from 'rxjs';
 import { GroupsService} from '../services/groups.service';
 import {NgForm} from '@angular/forms';
 import { not } from '@angular/compiler/src/output/output_ast';
-
+import {HttpClient } from '@angular/common/http';
+import {CookieService} from 'ngx-cookie-service';
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +21,7 @@ export class ContactsService {
   *Is holding current selected group name.
   */
   currentGroup = null;
-  constructor(private groups: GroupsService) {}
+  constructor(private groups: GroupsService, private http: HttpClient, private cookieService: CookieService) {}
 
   /*
   Is holding currenct contactlist size;
@@ -124,6 +125,7 @@ export class ContactsService {
   *@param {number} id - Contact id
   * */
   deleteContact(id: number) {
+    const cookieToken = this.cookieService.get('token');
     this.contacts = this.contacts.filter( value => {
       if ( value.contact_id !== id) {
         return value;
@@ -133,6 +135,10 @@ export class ContactsService {
     this.filterGroupMembers(this.currentGroup);
     this.groups.removeFromGroup(id);
     this.contactCounter.next(this.contacts.length);
+    this.http.post('http://127.0.0.1:5000/deletecontact', { contactId : id, token : cookieToken }).subscribe(res => {
+    }, err => {
+      console.log('error while deleting');
+    });
   }
 
   /*
