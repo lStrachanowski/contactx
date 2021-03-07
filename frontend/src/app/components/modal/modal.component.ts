@@ -66,16 +66,14 @@ export class ModalComponent implements OnInit {
       this.modalDelete.nativeElement.style.display = 'none';
       if (this.currentObject) {
         if (this.currentObject.owner === 'contact') {
-          let sta = this.contact.deleteContact(this.currentObject.element_id);
+          this.contact.deleteContact(this.currentObject.element_id);
           this.contact.deleted.next(true);
-          if (sta === true) {
-            this.alertMessage = 'Contact deleted.';
-            this.modalAlert.nativeElement.style.display = 'flex';
-            setTimeout(() => {
-              this.route.navigate(['/dashboard']);
-              this.contact.deleted.next(false);
-            }, 1500);
-          }
+          this.alertMessage = 'Contact deleted.';
+          this.modalAlert.nativeElement.style.display = 'flex';
+          setTimeout(() => {
+            this.route.navigate(['/dashboard']);
+            this.contact.deleted.next(false);
+          }, 1500);
         }
         if (this.currentObject.owner === 'group') {
           this.groups.deleteGroup(this.currentObject.element_id);
