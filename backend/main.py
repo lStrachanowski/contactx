@@ -114,7 +114,7 @@ def deletecontact():
         # contact_id = data['contactId']
         # print(int(contact_id), data['token'])
         db.deleteContact(data['token'],int(data['contactId']))
-        return make_response(jsonify({'success': 'Contact deleted'}), 200)
+        return make_response(jsonify({'success': 'OK'}), 200)
     else:
         print("GET")
         return "test"

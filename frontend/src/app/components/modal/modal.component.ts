@@ -51,6 +51,9 @@ export class ModalComponent implements OnInit {
     if ( value === 'note') {
       this.modalNote.nativeElement.style.display = 'flex';
     }
+    if (value === 'alert') {
+      this.modalAlert.nativeElement.style.display = 'flex';
+    }
 
   }
 
@@ -63,12 +66,16 @@ export class ModalComponent implements OnInit {
       this.modalDelete.nativeElement.style.display = 'none';
       if (this.currentObject) {
         if (this.currentObject.owner === 'contact') {
-          this.contact.deleteContact(this.currentObject.element_id);
+          let sta = this.contact.deleteContact(this.currentObject.element_id);
           this.contact.deleted.next(true);
-          setTimeout(() => {
-            this.route.navigate(['/dashboard']);
-            this.contact.deleted.next(false);
-          }, 1500);
+          if (sta === true) {
+            this.alertMessage = 'Contact deleted.';
+            this.modalAlert.nativeElement.style.display = 'flex';
+            setTimeout(() => {
+              this.route.navigate(['/dashboard']);
+              this.contact.deleted.next(false);
+            }, 1500);
+          }
         }
         if (this.currentObject.owner === 'group') {
           this.groups.deleteGroup(this.currentObject.element_id);

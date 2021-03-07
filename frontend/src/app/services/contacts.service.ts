@@ -5,6 +5,7 @@ import {NgForm} from '@angular/forms';
 import { not } from '@angular/compiler/src/output/output_ast';
 import {HttpClient } from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
+import {ModalComponent} from '../components/modal/modal.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -136,6 +137,10 @@ export class ContactsService {
     this.groups.removeFromGroup(id);
     this.contactCounter.next(this.contacts.length);
     this.http.post('http://127.0.0.1:5000/deletecontact', { contactId : id, token : cookieToken }).subscribe(res => {
+      const key = 'success';
+      if (res[key] === 'OK') {
+        console.log('deleted');
+      }
     }, err => {
       console.log('error while deleting');
     });
